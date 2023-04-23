@@ -1,6 +1,24 @@
-#  https://pre-commit.com/
-
 repos:
+  - repo: https://github.com/alessandrojcm/commitlint-pre-commit-hook
+    rev: v9.4.0
+    hooks:
+      - id: commitlint
+        stages: [ commit-msg ]
+        args: [ "--config=.configs/commitlint.config.js" ]
+
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.4.0
+    hooks:
+      - id: no-commit-to-branch
+        stages: [ prepare-commit-msg, merge-commit, push ]
+        always_run: false
+
+  - repo: https://github.com/mpalmer/action-validator
+    rev: v0.5.1
+    hooks:
+      - id: action-validator
+        stages: [ commit-msg ]
+
   - repo: https://github.com/Payadel/pre-commit-hooks
     rev: v0.1.3
     hooks:
@@ -10,5 +28,5 @@ repos:
         stages: [ push ]
       - id: run-scripts
         name: Before Commit
-        args: [ "-f", ".git-hooks/.git-hooks/before-commit.sh" ]
+        args: [ "-f", ".git-hooks/before-commit.sh" ]
         stages: [ commit-msg ]
