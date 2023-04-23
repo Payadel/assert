@@ -1,0 +1,19 @@
+name: 'Assert'
+description: 'Assert your Github action variables to make sure they are correct.'
+author: 'Payadel'
+
+# Here we define the inputs, which can be set
+# from the workflow file and are consumed in our code
+inputs:
+  inputs:
+    description: 'Variables with yaml structure'
+    required: true
+outputs:
+  success:
+    description: 'Are assert variables correct or not?'
+  errors:
+    description: 'List of errors with json structure'
+
+runs:
+  using: 'node16'
+  main: 'dist/index.js'
