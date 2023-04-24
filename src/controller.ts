@@ -14,12 +14,12 @@ import {
   assertTrue,
 } from "./asserts";
 
-export interface IRunOutput {
+export interface IControllerOutput {
   success: boolean;
   messages: string;
 }
 
-export const controller = async (inputs: IInputs): Promise<IRunOutput> => {
+export const controller = async (inputs: IInputs): Promise<IControllerOutput> => {
   let messages: string = "";
   let hasError: boolean = false;
 
