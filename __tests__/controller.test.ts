@@ -1,5 +1,5 @@
 import { IInputs } from "../src/Inputs";
-import { run } from "../src/run";
+import { controller } from "../src/controller";
 
 describe("run", () => {
   it("should run all input assertions and return a result object with success status and messages", async () => {
@@ -112,7 +112,7 @@ describe("run", () => {
       failFast: false,
     };
 
-    const result = await run(inputs);
+    const result = await controller(inputs);
 
     expect(result.success).toBe(false);
     expect(result.messages).toContain(
@@ -196,7 +196,7 @@ describe("run", () => {
       failFast: false,
     };
 
-    const result = await run(inputs);
+    const result = await controller(inputs);
 
     expect(result.success).toBe(false);
     expect(result.messages).toBe(
@@ -226,7 +226,7 @@ describe("run", () => {
       failFast: true,
     };
 
-    const result = await run(inputs);
+    const result = await controller(inputs);
 
     expect(result.success).toBe(false);
     expect(result.messages).toBe(
@@ -249,7 +249,7 @@ describe("run", () => {
       failFast: true,
     };
 
-    const result = await run(inputs);
+    const result = await controller(inputs);
 
     expect(result.success).toBe(true);
     expect(result.messages).toBe(
