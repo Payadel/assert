@@ -19,8 +19,8 @@ inputs:
 outputs:
   success:
     description: 'Are assert variables correct or not? (boolean)'
-  errors:
-    description: 'The detail of the errors'
+  messages:
+    description: 'Messages include errors and information'
 
 runs:
   using: 'node16'
