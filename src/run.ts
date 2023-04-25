@@ -8,7 +8,7 @@ const run = (): Promise<void> =>
         .then(inputs =>
             controller(inputs).then(outputs => {
                 core.setOutput("success", outputs.success);
-                core.setOutput("messages", outputs.messages);
+                core.setOutput("messages", JSON.stringify(outputs.messages));
                 core.setOutput("messagesStr", outputs.messagesStr);
 
                 if (inputs.verbose) core.info(outputs.messagesStr);

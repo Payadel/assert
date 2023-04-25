@@ -45,11 +45,14 @@ describe("run", () => {
 
         expect(output["success"]).toBe(true);
         expect(Object.keys(output).length).toBe(4);
-        expect(output["messages"].length).toBe(2);
+
+        const messages = JSON.parse(output["messages"]);
+        expect(messages.length).toBe(2);
         expect(output["messagesStr"]).toBe(
             "Test1: ✅ The expected (5) is EQUAL to actual (5)\n" +
                 "Test2: ✅ The expected (hello) is NOT EQUAL to actual (world)\n"
         );
+
         expect(output["info"]).toBe(
             "Test1: ✅ The expected (5) is EQUAL to actual (5)\n" +
                 "Test2: ✅ The expected (hello) is NOT EQUAL to actual (world)\n" +
@@ -95,7 +98,10 @@ describe("run", () => {
 
         expect(output["success"]).toBe(false);
         expect(Object.keys(output).length).toBe(5);
-        expect(output["messages"].length).toBe(2);
+
+        const messages = JSON.parse(output["messages"]);
+        expect(messages.length).toBe(2);
+
         expect(output["messagesStr"]).toBe(
             "Test1: ✅ The expected (5) is EQUAL to actual (5)\n" +
                 "Test2: ❌ The expected (hello) is EQUAL to actual (hello)\n"
