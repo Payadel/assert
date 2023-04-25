@@ -27,14 +27,131 @@ jobs:
 
       - name: Run Action
         uses: ./
-        id: hello
+        id: asserts
+        continue-on-error: true
         with:
-          who-to-greet: World
-          milliseconds: 1000
+          fail-fast: false
+          verbose: true
+          inputs: |
+            - name: test equals ok
+              type: 'Equals'
+              expected: 'expected'
+              actual: 'expected'
+            - name: test equals error
+              type: 'Equals'
+              expected: 'expected'
+              actual: 'actual'
+            
+            - name: test not equals ok
+              type: 'Not-Equals'
+              expected: 'expected'
+              actual: 'actual'
+            - name: test not equals error
+              type: 'Not-Equals'
+              expected: 'expected'
+              actual: 'expected'
+            
+            - name: test true ok
+              type: 'True'
+              input: 'true'
+            - name: test true error
+              type: 'True'
+              input: 'false'
+            
+            - name: test false ok
+              type: 'False'
+              input: 'false'
+            - name: test false error
+              type: 'False'
+              input: 'true'
+            
+            - name: test In ok
+              type: 'In'
+              member: 'a sample '
+              container: 'This is a sample message'
+            - name: test In error
+              type: 'In'
+              member: 'not in text'
+              container: 'This is a sample message'
+            - name: test In case sensitive
+              type: 'In'
+              member: 'Sample'
+              container: 'This is a sample message'
+              case_sensitive: true
+            
+            - name: test Not In ok
+              type: 'Not-In'
+              member: 'not in text'
+              container: 'This is a sample message'
+            - name: test Not In error
+              type: 'Not-In'
+              member: 'a sample '
+              container: 'This is a sample message'
+            - name: test Not In case sensitive
+              type: 'Not-In'
+              member: 'Sample'
+              container: 'This is a sample message'
+              case_sensitive: true
+            
+            - name: test greater ok
+              type: 'Greater'
+              target: 5
+              greater_than: 0
+            - name: test greater error
+              type: 'Greater'
+              target: 5
+              greater_than: 10
+            
+            - name: test greater equal ok
+              type: 'Greater-Equal'
+              target: 5
+              greater_equal: 5
+            - name: test greater equal error
+              type: 'Greater-Equal'
+              target: 5
+              greater_equal: 10
+            
+            - name: test less ok
+              type: 'Less'
+              target: 5
+              value: 10
+            - name: test less error
+              type: 'Less'
+              target: 5
+              value: 0
+            
+            - name: test less equal ok
+              type: 'Less-Equal'
+              target: 5
+              expected: 5
+            - name: test less equal error
+              type: 'Less-Equal'
+              target: 5
+              expected: 0
+            
+            - name: test regex ok
+              type: 'Regex'
+              regex: '[a-zA-Z0-9]+'
+              text: 'aB3'
+            - name: test regex error
+              type: 'Regex'
+              regex: '[a-zA-Z0-9]+'
+              text: 'new_aB3@'
 
-      - name: Get and Test outputs
-        run: |
-          cd .github/workflows
-          if [ ! -f assert.sh ]; then echo "Can not find assert.sh"; exit 1; fi
-          chmod +x assert.sh
-          ./assert.sh "${{ steps.hello.outputs.hello-message }}" "Hello World!" "hello-message"
+            - name: test invalid type
+              type: 'Invalid Type'
+
+      - name: Test Results
+        uses: ./
+        with:
+          fail-fast: false
+          verbose: true
+          inputs: |
+            - name: result must be false
+              type: 'False'
+              input: ${{ steps.asserts.outputs.success }}
+            
+            - name: message str must be valid
+              type: 'Equals'
+              actual: "${{ steps.asserts.outputs.messagesStr }}"
+              expected: "test equals ok: ✅ The expected (expected) is EQUAL to actual (expected) test equals error: ❌ The expected (expected) is NOT EQUAL to actual (actual) test not equals ok: ✅ The expected (expected) is NOT EQUAL to actual (actual) test not equals error: ❌ The expected (expected) is EQUAL to actual (expected) test true ok: ✅ 'true' is TRUE test true error: ✅ 'false' is TRUE test false ok: ❌ 'false' is NOT FALSE test false error: ❌ 'true' is NOT FALSE test In ok: ✅ 'a sample ' is IN 'This is a sample message' with case insensitive check. test In error: ❌ 'not in text' is NOT IN 'This is a sample message' with case insensitive check. test In case sensitive: ❌ 'Sample' is NOT IN 'This is a sample message' with case sensitive check. test Not In ok: ✅ 'not in text' is NOT IN 'This is a sample message' with case insensitive check. test Not In error: ❌ 'a sample ' is IN 'This is a sample message' with case insensitive check. test Not In case sensitive: ✅ 'Sample' is NOT IN 'This is a sample message' with case sensitive check. test greater ok: ✅ 5 is GREATER THAN 0 test greater error: ❌ 5 is NOT GREATER THAN 10 test greater equal ok: ✅ 5 is GREATER THAN or EQUAL 5 test greater equal error: ❌ 5 is NOT GREATER THAN or EQUAL 10 test less ok: ❌ Expected get number but got 'undefined' test less error: ❌ Expected get number but got 'undefined' test less equal ok: ❌ Expected get number but got 'undefined' test less equal error: ❌ Expected get number but got 'undefined' test regex ok: ✅ 'aB3' is MATCH with '/[a-zA-Z0-9]+/' test regex error: ✅ 'new_aB3@' is MATCH with '/[a-zA-Z0-9]+/' test invalid type: ❌ The type 'Invalid Type' is not supported. "
