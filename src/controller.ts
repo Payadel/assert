@@ -15,7 +15,7 @@ import {
 } from "./asserts";
 
 export interface IMessage {
-    type: 'error' | 'success';
+    type: "error" | "success";
     message: string;
 }
 
@@ -25,9 +25,11 @@ export interface IControllerOutput {
     messagesStr: string;
 }
 
-export const controller = async (inputs: IInputs): Promise<IControllerOutput> => {
+export const controller = async (
+    inputs: IInputs
+): Promise<IControllerOutput> => {
     const messages: IMessage[] = [];
-    let messagesStr: string = '';
+    let messagesStr: string = "";
     let hasError: boolean = false;
 
     for (const item of inputs.inputsYaml) {
@@ -58,7 +60,11 @@ export const controller = async (inputs: IInputs): Promise<IControllerOutput> =>
                 break;
             case "not-in":
                 result = await tryFunction(() =>
-                    assertNotIn(item.member, item.container, item.case_sensitive)
+                    assertNotIn(
+                        item.member,
+                        item.container,
+                        item.case_sensitive
+                    )
                 );
                 break;
             case "greater":
@@ -82,7 +88,9 @@ export const controller = async (inputs: IInputs): Promise<IControllerOutput> =>
                 );
                 break;
             case "regex":
-                result = await tryFunction(() => assertRegex(item.text, item.regex));
+                result = await tryFunction(() =>
+                    assertRegex(item.text, item.regex)
+                );
                 break;
             default:
                 result = {
@@ -92,11 +100,10 @@ export const controller = async (inputs: IInputs): Promise<IControllerOutput> =>
                 break;
         }
 
-
         const message = `${item.name}: ${result.messages}`;
         messages.push({
             type: result.success ? "success" : "error",
-            message: message
+            message: message,
         });
         messagesStr += `${message}\n`;
 
@@ -106,7 +113,7 @@ export const controller = async (inputs: IInputs): Promise<IControllerOutput> =>
                 return {
                     success: false,
                     messages: messages,
-                    messagesStr: messagesStr
+                    messagesStr: messagesStr,
                 };
         }
     }
@@ -114,7 +121,7 @@ export const controller = async (inputs: IInputs): Promise<IControllerOutput> =>
     return {
         success: !hasError,
         messages: messages,
-        messagesStr: messagesStr
+        messagesStr: messagesStr,
     };
 };
 
