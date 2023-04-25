@@ -91,15 +91,15 @@ export const assertIn = (member: any, container: any, caseSensitive: boolean) =>
             .then(is =>
                 is
                     ? resolve(
-                        `✅ '${member}' is IN '${container}' with case ${
-                            caseSensitive ? "sensitive" : "insensitive"
-                        } check.`
-                    )
+                          `✅ '${member}' is IN '${container}' with case ${
+                              caseSensitive ? "sensitive" : "insensitive"
+                          } check.`
+                      )
                     : reject(
-                        `❌ '${member}' is NOT IN '${container}' with case ${
-                            caseSensitive ? "sensitive" : "insensitive"
-                        } check.`
-                    )
+                          `❌ '${member}' is NOT IN '${container}' with case ${
+                              caseSensitive ? "sensitive" : "insensitive"
+                          } check.`
+                      )
             )
             .catch(reject)
     );
@@ -114,15 +114,15 @@ export const assertNotIn = (
             .then(is =>
                 is
                     ? reject(
-                        `❌ '${member}' is IN '${container}' with case ${
-                            caseSensitive ? "sensitive" : "insensitive"
-                        } check.`
-                    )
+                          `❌ '${member}' is IN '${container}' with case ${
+                              caseSensitive ? "sensitive" : "insensitive"
+                          } check.`
+                      )
                     : resolve(
-                        `✅ '${member}' is NOT IN '${container}' with case ${
-                            caseSensitive ? "sensitive" : "insensitive"
-                        } check.`
-                    )
+                          `✅ '${member}' is NOT IN '${container}' with case ${
+                              caseSensitive ? "sensitive" : "insensitive"
+                          } check.`
+                      )
             )
             .catch(reject)
     );

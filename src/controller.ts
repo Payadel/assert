@@ -1,4 +1,4 @@
-import {IInputs} from "./Inputs";
+import { IInputs } from "./Inputs";
 import * as core from "@actions/core";
 import {
     assertEquals,
