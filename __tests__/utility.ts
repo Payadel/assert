@@ -41,7 +41,34 @@ export function mockGetInput(
 export function mockSetOutput(
     name: string,
     value: any,
-    output: {[key: string]: any}
+    output: { [key: string]: any }
 ) {
     output[name] = value
+}
+
+export function mockInfo(
+    message: string,
+    output: { info: string }
+) {
+    output.info += `${message}\n`
+}
+
+export function mockError(
+    message: string | Error,
+    output: { error: string }
+) {
+    if (message instanceof Error)
+        output.error += `${message.message}\n`
+    else
+        output.error += `${message}\n`
+}
+
+export function mockSetFailed(
+    message: string | Error,
+    output: { failed: string }
+) {
+    if (message instanceof Error)
+        output.failed += `${message.message}\n`
+    else
+        output.failed += `${message}\n`
 }
