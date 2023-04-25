@@ -1,9 +1,9 @@
 import * as core from "@actions/core";
 
-import { getInputs } from "./Inputs";
+import { getInputs } from "./inputs";
 import { controller } from "./controller";
 
-const run = () =>
+const run = (): Promise<void> =>
     getInputs()
         .then(inputs =>
             controller(inputs).then(outputs => {
@@ -26,8 +26,9 @@ const run = () =>
         .then(() => core.info("Operation completed successfully."))
         .catch(error => {
             core.error("Operation failed.");
-            if (error instanceof Error) core.setFailed(error.message);
-            /* istanbul ignore next */ else core.setFailed(error);
+            core.setFailed(
+                error instanceof Error ? error.message : error.toString()
+            );
         });
 
 export default run;

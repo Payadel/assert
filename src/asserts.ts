@@ -1,4 +1,4 @@
-export const assertEquals = (expected: any, actual: any) =>
+export const assertEquals = (expected: any, actual: any): Promise<string> =>
     new Promise<string>((resolve, reject) => {
         if (expected === actual)
             return resolve(
@@ -6,11 +6,13 @@ export const assertEquals = (expected: any, actual: any) =>
             );
 
         return reject(
-            `❌ The expected (${expected}) is NOT EQUAL to actual (${actual})`
+            new Error(
+                `❌ The expected (${expected}) is NOT EQUAL to actual (${actual})`
+            )
         );
     });
 
-export const assertNotEquals = (expected: any, actual: any) =>
+export const assertNotEquals = (expected: any, actual: any): Promise<string> =>
     new Promise<string>((resolve, reject) => {
         if (expected !== actual)
             return resolve(
@@ -18,7 +20,9 @@ export const assertNotEquals = (expected: any, actual: any) =>
             );
 
         return reject(
-            `❌ The expected (${expected}) is EQUAL to actual (${actual})`
+            new Error(
+                `❌ The expected (${expected}) is EQUAL to actual (${actual})`
+            )
         );
     });
 
@@ -34,29 +38,31 @@ function isTrue(input: any): Promise<boolean> {
             default:
                 if (input === null) return resolve(false);
                 return reject(
-                    `❌ The input type '${typeof input}' is not supported. Supported types: string, boolean and number.`
+                    new Error(
+                        `❌ The input type '${typeof input}' is not supported. Supported types: string, boolean and number.`
+                    )
                 );
         }
     });
 }
 
-export const assertTrue = (input: any) =>
+export const assertTrue = (input: any): Promise<string> =>
     new Promise<string>((resolve, reject) =>
         isTrue(input)
             .then(is =>
                 is
                     ? resolve(`✅ '${input}' is TRUE`)
-                    : reject(`❌ '${input}' is NOT TRUE`)
+                    : reject(new Error(`❌ '${input}' is NOT TRUE`))
             )
             .catch(reject)
     );
 
-export const assertFalse = (input: any) =>
+export const assertFalse = (input: any): Promise<string> =>
     new Promise<string>((resolve, reject) =>
         isTrue(input)
             .then(is =>
                 is
-                    ? reject(`❌ '${input}' is NOT FALSE`)
+                    ? reject(new Error(`❌ '${input}' is NOT FALSE`))
                     : resolve(`✅ '${input}' is FALSE`)
             )
             .catch(reject)
@@ -69,10 +75,14 @@ function isIn(
 ): Promise<boolean> {
     return new Promise<boolean>((resolve, reject) => {
         if (typeof member !== "string")
-            return reject(`❌ Expected get string but got '${typeof member}'`);
+            return reject(
+                new Error(`❌ Expected get string but got '${typeof member}'`)
+            );
         if (typeof container !== "string")
             return reject(
-                `❌ Expected get string but got '${typeof container}'`
+                new Error(
+                    `❌ Expected get string but got '${typeof container}'`
+                )
             );
 
         const memberStr = caseSensitive ? member : member.toLowerCase();
@@ -85,7 +95,11 @@ function isIn(
     });
 }
 
-export const assertIn = (member: any, container: any, caseSensitive: boolean) =>
+export const assertIn = (
+    member: any,
+    container: any,
+    caseSensitive: boolean
+): Promise<string> =>
     new Promise<string>((resolve, reject) =>
         isIn(member, container, caseSensitive)
             .then(is =>
@@ -96,9 +110,11 @@ export const assertIn = (member: any, container: any, caseSensitive: boolean) =>
                           } check.`
                       )
                     : reject(
-                          `❌ '${member}' is NOT IN '${container}' with case ${
-                              caseSensitive ? "sensitive" : "insensitive"
-                          } check.`
+                          new Error(
+                              `❌ '${member}' is NOT IN '${container}' with case ${
+                                  caseSensitive ? "sensitive" : "insensitive"
+                              } check.`
+                          )
                       )
             )
             .catch(reject)
@@ -108,15 +124,17 @@ export const assertNotIn = (
     member: any,
     container: any,
     caseSensitive: boolean
-) =>
+): Promise<string> =>
     new Promise<string>((resolve, reject) =>
         isIn(member, container, caseSensitive)
             .then(is =>
                 is
                     ? reject(
-                          `❌ '${member}' is IN '${container}' with case ${
-                              caseSensitive ? "sensitive" : "insensitive"
-                          } check.`
+                          new Error(
+                              `❌ '${member}' is IN '${container}' with case ${
+                                  caseSensitive ? "sensitive" : "insensitive"
+                              } check.`
+                          )
                       )
                     : resolve(
                           `✅ '${member}' is NOT IN '${container}' with case ${
@@ -127,30 +145,50 @@ export const assertNotIn = (
             .catch(reject)
     );
 
-export const assertGreater = (target: any, greater_than: any) =>
+export const assertGreater = (
+    target: any,
+    greater_than: any
+): Promise<string> =>
     new Promise<string>((resolve, reject) => {
         if (typeof target !== "number") {
-            reject(`❌ Expected get number but got '${typeof target}'`);
+            reject(
+                new Error(`❌ Expected get number but got '${typeof target}'`)
+            );
             return;
         }
         if (typeof greater_than !== "number") {
-            reject(`❌ Expected get number but got '${typeof greater_than}'`);
+            reject(
+                new Error(
+                    `❌ Expected get number but got '${typeof greater_than}'`
+                )
+            );
             return;
         }
 
         if (target > greater_than)
             return resolve(`✅ ${target} is GREATER THAN ${greater_than}`);
-        return reject(`❌ ${target} is NOT GREATER THAN ${greater_than}`);
+        return reject(
+            new Error(`❌ ${target} is NOT GREATER THAN ${greater_than}`)
+        );
     });
 
-export const assertGreaterEqual = (target: any, greater_than: any) =>
+export const assertGreaterEqual = (
+    target: any,
+    greater_than: any
+): Promise<string> =>
     new Promise<string>((resolve, reject) => {
         if (typeof target !== "number") {
-            reject(`❌ Expected get number but got '${typeof target}'`);
+            reject(
+                new Error(`❌ Expected get number but got '${typeof target}'`)
+            );
             return;
         }
         if (typeof greater_than !== "number") {
-            reject(`❌ Expected get number but got '${typeof greater_than}'`);
+            reject(
+                new Error(
+                    `❌ Expected get number but got '${typeof greater_than}'`
+                )
+            );
             return;
         }
 
@@ -159,46 +197,68 @@ export const assertGreaterEqual = (target: any, greater_than: any) =>
                 `✅ ${target} is GREATER THAN or EQUAL ${greater_than}`
             );
         return reject(
-            `❌ ${target} is NOT GREATER THAN or EQUAL ${greater_than}`
+            new Error(
+                `❌ ${target} is NOT GREATER THAN or EQUAL ${greater_than}`
+            )
         );
     });
 
-export const assertLess = (target: any, less_than: any) =>
+export const assertLess = (target: any, less_than: any): Promise<string> =>
     new Promise<string>((resolve, reject) => {
         if (typeof target !== "number") {
-            reject(`❌ Expected get number but got '${typeof target}'`);
+            reject(
+                new Error(`❌ Expected get number but got '${typeof target}'`)
+            );
             return;
         }
         if (typeof less_than !== "number") {
-            reject(`❌ Expected get number but got '${typeof less_than}'`);
+            reject(
+                new Error(
+                    `❌ Expected get number but got '${typeof less_than}'`
+                )
+            );
             return;
         }
 
         if (target < less_than)
             return resolve(`✅ ${target} is LESS THAN ${less_than}`);
-        return reject(`❌ ${target} is NOT LESS THAN ${less_than}`);
+        return reject(new Error(`❌ ${target} is NOT LESS THAN ${less_than}`));
     });
 
-export const assertLessEqual = (target: any, less_than: any) =>
+export const assertLessEqual = (target: any, less_than: any): Promise<string> =>
     new Promise<string>((resolve, reject) => {
         if (typeof target !== "number") {
-            reject(`❌ Expected get number but got '${typeof target}'`);
+            reject(
+                new Error(`❌ Expected get number but got '${typeof target}'`)
+            );
             return;
         }
         if (typeof less_than !== "number") {
-            reject(`❌ Expected get number but got '${typeof less_than}'`);
+            reject(
+                new Error(
+                    `❌ Expected get number but got '${typeof less_than}'`
+                )
+            );
             return;
         }
 
         if (target <= less_than)
             return resolve(`✅ ${target} is LESS THAN or EQUAL ${less_than}`);
-        return reject(`❌ ${target} is NOT LESS THAN or EQUAL ${less_than}`);
+        return reject(
+            new Error(`❌ ${target} is NOT LESS THAN or EQUAL ${less_than}`)
+        );
     });
 
-export const assertRegex = (text: any, regex: any) =>
+export const assertRegex = (text: any, regex: any): Promise<string> =>
     new Promise<string>((resolve, reject) => {
         if (typeof text !== "string")
-            return reject(`❌ Expected get string but got ${typeof text}`);
+            return reject(
+                new Error(`❌ Expected get string but got ${typeof text}`)
+            );
+        if (!(regex instanceof RegExp) && typeof regex !== "string")
+            return reject(
+                new Error(`❌ Expected get regex but got ${typeof regex}`)
+            );
 
         // check if the input is already a regular expression object
         if (!(regex instanceof RegExp)) {
@@ -208,5 +268,5 @@ export const assertRegex = (text: any, regex: any) =>
 
         if (regex.test(text))
             return resolve(`✅ '${text}' is MATCH with '${regex}'`);
-        return reject(`❌ '${text}' is NOT MATCH with '${regex}'`);
+        return reject(new Error(`❌ '${text}' is NOT MATCH with '${regex}'`));
     });

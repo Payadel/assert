@@ -34,14 +34,9 @@ describe("assertEquals", () => {
         const actual = 10;
 
         // Act
-        try {
-            await assertEquals(expected, actual);
-        } catch (error) {
-            // Assert
-            expect(error).toBe(
-                `❌ The expected (${expected}) is NOT EQUAL to actual (${actual})`
-            );
-        }
+        await expect(assertEquals(expected, actual)).rejects.toThrowError(
+            `❌ The expected (${expected}) is NOT EQUAL to actual (${actual})`
+        );
     });
 });
 
@@ -67,14 +62,9 @@ describe("assertNotEquals", () => {
         const actual = 5;
 
         // Act
-        try {
-            await assertNotEquals(expected, actual);
-        } catch (error) {
-            // Assert
-            expect(error).toBe(
-                `❌ The expected (${expected}) is EQUAL to actual (${actual})`
-            );
-        }
+        await expect(assertNotEquals(expected, actual)).rejects.toThrowError(
+            `❌ The expected (${expected}) is EQUAL to actual (${actual})`
+        );
     });
 });
 
@@ -118,12 +108,9 @@ describe("assertTrue", () => {
         const input = "";
 
         // Act
-        try {
-            await assertTrue(input);
-        } catch (error) {
-            // Assert
-            expect(error).toBe(`❌ '${input}' is NOT TRUE`);
-        }
+        await expect(assertTrue(input)).rejects.toThrowError(
+            `❌ '${input}' is NOT TRUE`
+        );
     });
 
     it("should return a rejected promise with an error message when the input is false", async () => {
@@ -131,12 +118,9 @@ describe("assertTrue", () => {
         const input = false;
 
         // Act
-        try {
-            await assertTrue(input);
-        } catch (error) {
-            // Assert
-            expect(error).toBe(`❌ '${input}' is NOT TRUE`);
-        }
+        await expect(assertTrue(input)).rejects.toThrowError(
+            `❌ '${input}' is NOT TRUE`
+        );
     });
 
     it("should return a rejected promise with an error message when the input is null", async () => {
@@ -144,12 +128,9 @@ describe("assertTrue", () => {
         const input = null;
 
         // Act
-        try {
-            await assertTrue(input);
-        } catch (error) {
-            // Assert
-            expect(error).toBe(`❌ 'null' is NOT TRUE`);
-        }
+        await expect(assertTrue(input)).rejects.toThrowError(
+            `❌ 'null' is NOT TRUE`
+        );
     });
 
     it("should return a rejected promise with an error message when the input is unsupported", async () => {
@@ -157,14 +138,9 @@ describe("assertTrue", () => {
         const input = undefined;
 
         // Act
-        try {
-            await assertTrue(input);
-        } catch (error) {
-            // Assert
-            expect(error).toBe(
-                `❌ The input type '${typeof input}' is not supported. Supported types: string, boolean and number.`
-            );
-        }
+        await expect(assertTrue(input)).rejects.toThrowError(
+            `❌ The input type '${typeof input}' is not supported. Supported types: string, boolean and number.`
+        );
     });
 });
 
@@ -219,12 +195,9 @@ describe("assertFalse", () => {
         const input = "Hello World";
 
         // Act
-        try {
-            await assertFalse(input);
-        } catch (error) {
-            // Assert
-            expect(error).toBe(`❌ '${input}' is NOT FALSE`);
-        }
+        await expect(assertFalse(input)).rejects.toThrowError(
+            `❌ '${input}' is NOT FALSE`
+        );
     });
 
     it("should return a rejected promise with an error message when the input is unsupported", async () => {
@@ -232,14 +205,9 @@ describe("assertFalse", () => {
         const input = undefined;
 
         // Act
-        try {
-            await assertFalse(input);
-        } catch (error) {
-            // Assert
-            expect(error).toBe(
-                `❌ The input type '${typeof input}' is not supported. Supported types: string, boolean and number.`
-            );
-        }
+        await expect(assertFalse(input)).rejects.toThrowError(
+            `❌ The input type '${typeof input}' is not supported. Supported types: string, boolean and number.`
+        );
     });
 });
 
@@ -275,11 +243,9 @@ test("assertIn: string is not in container", async () => {
         caseSensitive ? "sensitive" : "insensitive"
     } check.`;
 
-    try {
-        await assertIn(member, container, caseSensitive);
-    } catch (error) {
-        expect(error).toBe(expected);
-    }
+    await expect(
+        assertIn(member, container, caseSensitive)
+    ).rejects.toThrowError(expected);
 });
 
 test("assertIn: string is not in container", async () => {
@@ -290,11 +256,9 @@ test("assertIn: string is not in container", async () => {
         caseSensitive ? "sensitive" : "insensitive"
     } check.`;
 
-    try {
-        await assertIn(member, container, caseSensitive);
-    } catch (error) {
-        expect(error).toBe(expected);
-    }
+    await expect(
+        assertIn(member, container, caseSensitive)
+    ).rejects.toThrowError(expected);
 });
 
 test("assertIn: invalid member type", async () => {
@@ -303,11 +267,9 @@ test("assertIn: invalid member type", async () => {
     const caseSensitive = true;
     const expected = `❌ Expected get string but got 'number'`;
 
-    try {
-        await assertIn(member, container, caseSensitive);
-    } catch (error) {
-        expect(error).toBe(expected);
-    }
+    await expect(
+        assertIn(member, container, caseSensitive)
+    ).rejects.toThrowError(expected);
 });
 
 test("assertIn: invalid container type", async () => {
@@ -316,11 +278,9 @@ test("assertIn: invalid container type", async () => {
     const caseSensitive = true;
     const expected = `❌ Expected get string but got 'number'`;
 
-    try {
-        await assertIn(member, container, caseSensitive);
-    } catch (error) {
-        expect(error).toBe(expected);
-    }
+    await expect(
+        assertIn(member, container, caseSensitive)
+    ).rejects.toThrowError(expected);
 });
 
 describe("assertNotIn", () => {
@@ -344,11 +304,9 @@ describe("assertNotIn", () => {
             caseSensitive ? "sensitive" : "insensitive"
         } check.`;
 
-        try {
-            await assertNotIn(member, container, caseSensitive);
-        } catch (error) {
-            expect(error).toBe(expected);
-        }
+        await expect(
+            assertNotIn(member, container, caseSensitive)
+        ).rejects.toThrowError(expected);
     });
 
     test("string is in container with case insensitive check", async () => {
@@ -359,11 +317,9 @@ describe("assertNotIn", () => {
             caseSensitive ? "sensitive" : "insensitive"
         } check.`;
 
-        try {
-            await assertNotIn(member, container, caseSensitive);
-        } catch (error) {
-            expect(error).toBe(expected);
-        }
+        await expect(
+            assertNotIn(member, container, caseSensitive)
+        ).rejects.toThrowError(expected);
     });
 
     test("invalid member type", async () => {
@@ -372,11 +328,9 @@ describe("assertNotIn", () => {
         const caseSensitive = true;
         const expected = `❌ Expected get string but got 'number'`;
 
-        try {
-            await assertNotIn(member, container, caseSensitive);
-        } catch (error) {
-            expect(error).toBe(expected);
-        }
+        await expect(
+            assertNotIn(member, container, caseSensitive)
+        ).rejects.toThrowError(expected);
     });
 
     test("invalid container type", async () => {
@@ -385,11 +339,9 @@ describe("assertNotIn", () => {
         const caseSensitive = true;
         const expected = `❌ Expected get string but got 'number'`;
 
-        try {
-            await assertNotIn(member, container, caseSensitive);
-        } catch (error) {
-            expect(error).toBe(expected);
-        }
+        await expect(
+            assertNotIn(member, container, caseSensitive)
+        ).rejects.toThrowError(expected);
     });
 });
 
@@ -400,27 +352,21 @@ describe("assertGreater", () => {
     });
 
     it("should reject if target is not greater than greater_than", async () => {
-        try {
-            await assertGreater(2, 5);
-        } catch (e) {
-            expect(e).toBe("❌ 2 is NOT GREATER THAN 5");
-        }
+        await expect(assertGreater(2, 5)).rejects.toThrowError(
+            "❌ 2 is NOT GREATER THAN 5"
+        );
     });
 
     it("should reject if target is not a number", async () => {
-        try {
-            await assertGreater("abc", 2);
-        } catch (error) {
-            expect(error).toBe("❌ Expected get number but got 'string'");
-        }
+        await expect(assertGreater("abc", 2)).rejects.toThrowError(
+            "❌ Expected get number but got 'string'"
+        );
     });
 
     it("should reject if greater_than is not a number", async () => {
-        try {
-            await assertGreater(5, "abc");
-        } catch (error) {
-            expect(error).toBe("❌ Expected get number but got 'string'");
-        }
+        await expect(assertGreater(5, "abc")).rejects.toThrowError(
+            "❌ Expected get number but got 'string'"
+        );
     });
 });
 
@@ -431,27 +377,21 @@ describe("assertGreaterEqual", () => {
     });
 
     test("should reject if target is less than greater_than", async () => {
-        try {
-            await assertGreaterEqual(3, 5);
-        } catch (error) {
-            expect(error).toBe("❌ 3 is NOT GREATER THAN or EQUAL 5");
-        }
+        await expect(assertGreaterEqual(3, 5)).rejects.toThrowError(
+            "❌ 3 is NOT GREATER THAN or EQUAL 5"
+        );
     });
 
     test("should reject if target is not a number", async () => {
-        try {
-            await assertGreaterEqual("foo", 5);
-        } catch (error) {
-            expect(error).toBe("❌ Expected get number but got 'string'");
-        }
+        await expect(assertGreaterEqual("foo", 5)).rejects.toThrowError(
+            "❌ Expected get number but got 'string'"
+        );
     });
 
     test("should reject if greater_than is not a number", async () => {
-        try {
-            await assertGreaterEqual(5, "foo");
-        } catch (error) {
-            expect(error).toBe("❌ Expected get number but got 'string'");
-        }
+        await expect(assertGreaterEqual(5, "foo")).rejects.toThrowError(
+            "❌ Expected get number but got 'string'"
+        );
     });
 });
 
@@ -462,31 +402,23 @@ describe("assertLess", () => {
     });
 
     it("should return a rejected promise when the target is greater than or equal to the given number", async () => {
-        try {
-            await assertLess(10, 5);
-        } catch (e) {
-            expect(e).toBe("❌ 10 is NOT LESS THAN 5");
-        }
+        await expect(assertLess(10, 5)).rejects.toThrowError(
+            "❌ 10 is NOT LESS THAN 5"
+        );
 
-        try {
-            await assertLess(5, 5);
-        } catch (e) {
-            expect(e).toBe("❌ 5 is NOT LESS THAN 5");
-        }
+        await expect(assertLess(5, 5)).rejects.toThrowError(
+            "❌ 5 is NOT LESS THAN 5"
+        );
     });
 
     it("should return a rejected promise when the target or the less_than parameter are not numbers", async () => {
-        try {
-            await assertLess("5", 5);
-        } catch (e) {
-            expect(e).toBe("❌ Expected get number but got 'string'");
-        }
+        await expect(assertLess("5", 5)).rejects.toThrowError(
+            "❌ Expected get number but got 'string'"
+        );
 
-        try {
-            await assertLess(5, "5");
-        } catch (e) {
-            expect(e).toBe("❌ Expected get number but got 'string'");
-        }
+        await expect(assertLess(5, "5")).rejects.toThrowError(
+            "❌ Expected get number but got 'string'"
+        );
     });
 });
 
@@ -499,67 +431,57 @@ describe("assertLessEqual", () => {
     });
 
     it("should return a rejected promise when the target is greater than the given number", async () => {
-        try {
-            await assertLessEqual(10, 5);
-        } catch (e) {
-            expect(e).toBe("❌ 10 is NOT LESS THAN or EQUAL 5");
-        }
+        await expect(assertLessEqual(10, 5)).rejects.toThrowError(
+            "❌ 10 is NOT LESS THAN or EQUAL 5"
+        );
     });
 
     it("should return a rejected promise when the target or the less_than parameter are not numbers", async () => {
-        try {
-            await assertLessEqual("10", 5);
-        } catch (e) {
-            expect(e).toBe("❌ Expected get number but got 'string'");
-        }
-        try {
-            await assertLessEqual(10, "5");
-        } catch (e) {
-            expect(e).toBe("❌ Expected get number but got 'string'");
-        }
+        await expect(assertLessEqual("10", 5)).rejects.toThrowError(
+            "❌ Expected get number but got 'string'"
+        );
+
+        await expect(assertLessEqual(10, "5")).rejects.toThrowError(
+            "❌ Expected get number but got 'string'"
+        );
     });
 });
 
 describe("assertRegex", () => {
     it("should resolve with a message when the text matches the regular expression", async () => {
         const text = "Hello, World!";
-        const regex = /world/i; // case-insensitive regex
-        const result = await assertRegex(text, regex);
 
+        let result = await assertRegex(text, /world/i);
         expect(result).toBe("✅ 'Hello, World!' is MATCH with '/world/i'");
+
+        result = await assertRegex(text, "World");
+        expect(result).toBe("✅ 'Hello, World!' is MATCH with '/World/'");
     });
 
     it("should reject with a message when the text does not match the regular expression", async () => {
         const text = "Goodbye, World!";
         const regex = /hello/i; // case-insensitive regex
-        try {
-            await assertRegex(text, regex);
-        } catch (error) {
-            expect(error).toBe(
-                "❌ 'Goodbye, World!' is NOT MATCH with '/hello/i'"
-            );
-        }
+
+        await expect(assertRegex(text, regex)).rejects.toThrowError(
+            "❌ 'Goodbye, World!' is NOT MATCH with '/hello/i'"
+        );
     });
 
     it("should reject with a message when the regex input is not a string or RegExp object", async () => {
         const text = "Hello, World!";
         const regex = {}; // invalid regex input
-        try {
-            await assertRegex(text, regex);
-        } catch (error) {
-            expect(error).toContain("❌");
-            expect(error).toContain(typeof regex);
-        }
+
+        await expect(assertRegex(text, regex)).rejects.toThrowError(
+            "❌ Expected get regex but got object"
+        );
     });
 
     it("should reject with a message when the text input is not a string", async () => {
         const text = 123; // invalid text input
         const regex = /hello/i; // case-insensitive regex
-        try {
-            await assertRegex(text, regex);
-        } catch (error) {
-            expect(error).toContain("❌");
-            expect(error).toContain(typeof text);
-        }
+
+        await expect(assertRegex(text, regex)).rejects.toThrowError(
+            "❌ Expected get string but got number"
+        );
     });
 });

@@ -1,4 +1,4 @@
-import { IInputs } from "../src/Inputs";
+import { IInputs } from "../src/inputs";
 import { controller, IControllerOutput } from "../src/controller";
 
 describe("run", () => {

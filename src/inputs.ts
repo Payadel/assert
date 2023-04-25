@@ -7,8 +7,8 @@ export interface IInputs {
     verbose: boolean;
 }
 
-export const getInputs = () =>
-    new Promise<IInputs>((resolve, _) => {
+export const getInputs = (): Promise<IInputs> =>
+    new Promise<IInputs>(resolve => {
         const inputs = getInputOrDefault("inputs");
         if (!inputs || inputs.trim() === "")
             throw new Error(
@@ -22,13 +22,13 @@ export const getInputs = () =>
 
         return resolve({
             inputsYaml: parsedYaml,
-            failFast: failFast,
-            verbose: verbose,
+            failFast,
+            verbose,
         });
     });
 
-function getInputOrDefault(name: string, default_value: any = null) {
-    let input = core.getInput(name);
+function getInputOrDefault(name: string, default_value: any = null): string {
+    const input = core.getInput(name);
     if (!input || input === "") return default_value;
     return input;
 }

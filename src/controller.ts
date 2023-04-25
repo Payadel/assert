@@ -1,4 +1,4 @@
-import { IInputs } from "./Inputs";
+import { IInputs } from "./inputs";
 import * as core from "@actions/core";
 import {
     assertEquals,
@@ -29,8 +29,8 @@ export const controller = async (
     inputs: IInputs
 ): Promise<IControllerOutput> => {
     const messages: IMessage[] = [];
-    let messagesStr: string = "";
-    let hasError: boolean = false;
+    let messagesStr = "";
+    let hasError = false;
 
     for (const item of inputs.inputsYaml) {
         core.debug(`Type: ${item.type}`);
@@ -103,7 +103,7 @@ export const controller = async (
         const message = `${item.name}: ${result.messages}`;
         messages.push({
             type: result.success ? "success" : "error",
-            message: message,
+            message,
         });
         messagesStr += `${message}\n`;
 
@@ -112,16 +112,16 @@ export const controller = async (
             if (inputs.failFast)
                 return {
                     success: false,
-                    messages: messages,
-                    messagesStr: messagesStr,
+                    messages,
+                    messagesStr,
                 };
         }
     }
 
     return {
         success: !hasError,
-        messages: messages,
-        messagesStr: messagesStr,
+        messages,
+        messagesStr,
     };
 };
 
@@ -132,7 +132,7 @@ interface IResult {
 
 async function tryFunction(func: () => Promise<string>): Promise<IResult> {
     try {
-        let message = await func();
+        const message = await func();
         return {
             success: true,
             messages: message,
@@ -140,7 +140,7 @@ async function tryFunction(func: () => Promise<string>): Promise<IResult> {
     } catch (e: any) {
         return {
             success: false,
-            messages: e.toString(),
+            messages: e instanceof Error ? e.message : e.toString(),
         };
     }
 }

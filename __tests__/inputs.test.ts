@@ -1,4 +1,4 @@
-import { getInputs, IInputs } from "../src/Inputs";
+import { getInputs, IInputs } from "../src/inputs";
 import * as core from "@actions/core";
 // @ts-ignore
 import { mockGetBooleanInput, mockGetInput, validInputYaml } from "./utility";
