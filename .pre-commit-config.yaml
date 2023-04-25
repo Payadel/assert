@@ -30,3 +30,7 @@ repos:
         name: Before Commit
         args: [ "-f", ".git-hooks/before-commit.sh" ]
         stages: [ commit-msg ]
+      - id: run-scripts
+        name: Run jest before push
+        args: [ "-f", ".git-hooks/run-jest.sh" ]
+        stages: [ push ]
