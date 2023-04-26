@@ -51,8 +51,8 @@ export function mockInfo(message: string, output: { info: string }) {
 }
 
 export function mockError(message: string | Error, output: { error: string }) {
-    if (message instanceof Error) output.error += `${message.message}\n`;
-    else output.error += `${message}\n`;
+    output.error +=
+        message instanceof Error ? `${message.message}\n` : `${message}\n`;
 }
 
 export function mockSetFailed(
