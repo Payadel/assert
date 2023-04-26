@@ -1,191 +1,270 @@
-<h1 align="center">
-  <a href="">
-    <img src="" alt="Logo" width="100" height="100">
-  </a>
-</h1>
-
 <div align="center">
-  PROJECT_NAME
+  <h1>Assert GitHub Action</h1>
   <br />
   <a href="#getting-started"><strong>Getting Started »</strong></a>
   <br />
   <br />
-  <a href="https://github.com/GITHUB_USERNAME/REPO_SLUG/issues/new?assignees=&labels=bug&template=BUG_REPORT.md&title=bug%3A+">Report a Bug</a>
+  <a href="https://github.com/Payadel/assert/issues/new?assignees=&labels=bug&template=BUG_REPORT.md&title=bug%3A+">Report a Bug</a>
   ·
-  <a href="https://github.com/GITHUB_USERNAME/REPO_SLUG/issues/new?assignees=&labels=enhancement&template=FEATURE_REQUEST.md&title=feat%3A+">Request a Feature</a>
+  <a href="https://github.com/Payadel/assert/issues/new?assignees=&labels=enhancement&template=FEATURE_REQUEST.md&title=feat%3A+">Request a Feature</a>
   .
-  <a href="https://github.com/GITHUB_USERNAME/REPO_SLUG/issues/new?assignees=&labels=question&template=SUPPORT_QUESTION.md&title=support%3A+">Ask a Question</a>
+  <a href="https://github.com/Payadel/assert/issues/new?assignees=&labels=question&template=SUPPORT_QUESTION.md&title=support%3A+">Ask a Question</a>
 </div>
 
 <div align="center">
 <br />
 
-![GitHub](https://img.shields.io/github/license/User/Repo)
+[![code with love by Payadel](https://img.shields.io/badge/%3C%2F%3E%20with%20%E2%99%A5%20by-Payadel-ff1414.svg?style=flat-square)](https://github.com/Payadel)
 
-[![Pull Requests welcome](https://img.shields.io/badge/PRs-welcome-ff69b4.svg?style=flat-square)](https://github.com/GITHUB_USERNAME/REPO_SLUG/issues?q=is%3Aissue+is%3Aopen+label%3A%22help+wanted%22)
-[![code with love by GITHUB_USERNAME](https://img.shields.io/badge/%3C%2F%3E%20with%20%E2%99%A5%20by-GITHUB_USERNAME-ff1414.svg?style=flat-square)](https://github.com/GITHUB_USERNAME)
-
+![Coverage](https://img.shields.io/badge/coverage-100%25-brightgreen.svg)
+![GitHub](https://img.shields.io/github/license/Payadel/assert)
+[![Pull Requests welcome](https://img.shields.io/badge/PRs-welcome-ff69b4.svg?style=flat-square)](https://github.com/Payadel/assert/issues?q=is%3Aissue+is%3Aopen+label%3A%22help+wanted%22)
 </div>
-
-<details>
-<summary>Table of Contents</summary>
-
-- [About](#about)
-    - [Demo](#demo)
-    - [Built With](#built-with)
-- [Getting Started](#getting-started)
-    - [Prerequisites](#prerequisites)
-    - [Installation](#installation)
-- [Usage](#usage)
-    - [Documentation](#documentation)
-- [Known issues](#known-issues)
-- [CHANGELOG](#changelog)
-- [Features](#features)
-- [Roadmap](#roadmap)
-- [Support](#support)
-- [Used By](#used-by)
-- [FAQ](#faq)
-- [Project assistance](#project-assistance)
-- [Contributing](#contributing)
-- [Authors & contributors](#authors--contributors)
-- [Security](#security)
-- [License](#license)
-- [Acknowledgements](#acknowledgements)
-- [Related](#related)
-
-</details>
 
 ## About
 
-> **[?]**
-> Provide general information about your project here.
-> Put a meaningful, short, plain-language description of:
-> What problem does it (intend to) solve?
-> What is the purpose of your project?
-> What this project is trying to accomplish and why it matters?
-> Why did you undertake it?
-> Describe the problem(s) this project solves.
-> Describe how this software can improve the lives of its audience.
-> Describe what sets this apart from related-projects.
-> You don't have to answer all the questions -- just the ones relevant to your project.
+**Assert** is a TypeScript-based GitHub Action that provides a simple and effective way to assert variables. It is ideal
+for use in CI/CD pipelines and can be used to ensure that outputs from previous steps meet expected values.
 
 ### Demo
 
-**Screenshot**: If the software has visual components, place a screenshot after the description; e.g.,
-
-<details>
-<summary>Screenshots</summary>
-<br>
-
-> **[?]**
-> Please provide your screenshots here.
-
-|                               Home Page                               |                               Login Page                               |
-| :-------------------------------------------------------------------: | :--------------------------------------------------------------------: |
-| <img src="docs/images/screenshot.png" title="Home Page" width="100%"> | <img src="docs/images/screenshot.png" title="Login Page" width="100%"> |
-
-</details>
-
-### Built With
-
-> **[?]**
-> Please provide the technologies that are used in the project.
-
-**Client:** React, Redux, TailwindCSS
-
-**Server:** Node, Express
+<img src="docs/images/sample-output.png" title="Sample output" alt="sample output">
 
 ## Getting Started
 
-### Prerequisites
-
-> **[?]**
-> What are the project requirements/dependencies?
-> Describe any dependencies that must be installed for this software to work. This includes programming languages, databases or other storage mechanisms, build tools, frameworks, and so forth. If specific versions of other software are required, or known not to work, call that out.
-
-### Installation
-
-> **[?]**
-> Describe how to install and get started with the project.
-> Detailed instructions on how to install, configure, and get the project running. This should be frequently tested to ensure reliability. Alternatively, link to a separate [INSTALL](INSTALL.md) document.
-
 ## Usage
 
-> **[?]**
-> How does one go about using it?
-> Provide various use cases and code examples here.
+To use Assert GitHub Action in your workflow, simply add the following step to your `.yml` file:
 
-```javascript
-import Component from 'my-project'
+```yaml
+- name: Test Results
+  uses: Payadel/assert@v1
+  with:
+    fail-fast: false
+    verbose: true
+    inputs: |
+      # assertions
 
-function App() {
-    return <Component/>
-}
 ```
 
-### Documentation
+If `fail-fast` is set to `false`, all tests will be executed even if a test fails.
 
-[Documentation](https://linktodocumentation)
+If `verbose` is `true`, all messages (including successful tests) will be displayed.
 
-## Known issues
+The `inputs` parameter should contain a list of assertion objects that you wish to perform.
 
-Document any known significant shortcomings with the software.
+An assertion object consists of the following properties:
+
+- **name:** A descriptive name for the assertion.
+- **type:** The type of assertion to perform. Valid types
+  include `Equals`, `Not-Equals`, `True`, `False`, `In`, `Not-In`, `Greater`, `Greater-Equal`, `Less`, `Less-Equal`,
+  and `Regex`. (The capitalization of the letters is not important.)
+- Other parameters: It depends on the `type`, which will be explained below.
+
+### Type: Equals and Not-Equals
+
+- **expected:** The expected value for the assertion.
+- **actual:** The actual value to be tested.
+
+#### Sample
+
+```yaml
+    inputs: |
+      - name: test equality
+        type: Equals
+        expected: 'valid value'
+        actual: ${{ steps.prev_step_id.outputs.variable }}
+```
+
+### Type: True and False
+
+- **input:** The value to be tested.
+
+#### Sample
+
+```yaml
+    inputs: |
+      - name: test True
+        type: True
+        input: ${{ steps.prev_step_id.outputs.success }}
+```
+
+### Type: In and Not-In
+
+- **member:** The value to search for.
+- **container:** The string to search within.
+- **case_sensitive (boolean):** Is the search case-sensitive or not? (default is `false`)
+
+#### Sample
+
+```yaml
+    inputs: |
+      - name: test In
+        type: In
+        member: 'World'
+        container: ${{ steps.prev_step_id.outputs.message }}
+        case_sensitive: true
+```
+
+### Type: Greater
+
+- **target (number):** The number to be checked.
+- **greater_than (number):** The value to compare against for Greater assertions.
+
+#### Sample
+
+```yaml
+    inputs: |
+      - name: test Greater
+        type: Greater
+        greater_than: 1
+        target: ${{ steps.prev_step_id.outputs.number }}
+```
+
+### Type: Greater-Equal
+
+- **target (number):** The number to be checked.
+- **greater_equal:** The value to compare against for Greater-Equal assertions.
+
+#### Sample
+
+```yaml
+    inputs: |
+      - name: test Greater or Equal
+        type: Greater-Equal
+        greater_equal: 1
+        target: ${{ steps.prev_step_id.outputs.number }}
+```
+
+### Type: Less
+
+- **target (number):** The number to be checked.
+- **less_than (number):** The value to compare against for Less assertions.
+
+#### Sample
+
+```yaml
+    inputs: |
+      - name: test Less
+        type: Less
+        less_than: 100
+        target: ${{ steps.prev_step_id.outputs.number }}
+```
+
+### Type: Less-Equal
+
+- **target (number):** The number to be checked.
+- **less_equal (number):** The value to compare against for Less-Equal assertions.
+
+#### Sample
+
+```yaml
+    inputs: |
+      - name: test Less Equal
+        type: Less-Equal
+        less_equal: 100
+        target: ${{ steps.prev_step_id.outputs.number }}
+```
+
+### Type: Regex
+
+- **regex:** The regular expression to match against for Regex assertions.
+- **text:** The text to be checked.
+
+#### Sample
+
+```yaml
+    inputs: |
+      - name: test regex
+        type: Regex
+        regex: '[0-9]+'
+        text: ${{ steps.prev_step_id.outputs.number }}
+```
 
 ## CHANGELOG
 
+Please read the [CHANGELOG.md](CHANGELOG.md)
+
 ## Features
 
--
--
+- Provides assertions for various types of comparisons,
+  including `Equals`, `Not-Equals`, `True`, `False`, `In`, `Not-In`, `Greater`, `Greater-Equal`, `Less`, `Less-Equal`,
+  and `Regex`.
+
+- Customizable to include `verbose` output for each assertion, providing detailed information about the expected and
+  actual results.
+
+- Supports `fail-fast` behavior, which stops the entire workflow as soon as an assertion fails.
+
+- Written in TypeScript and thoroughly (100%) tested, ensuring reliable performance and accurate results.
+
+- Easy to integrate into GitHub Actions workflows with a simple and intuitive syntax.
+
+With these features, assert makes it easy to ensure that variables in your GitHub Actions workflows meet the expected
+criteria, reducing the likelihood of errors and ensuring that your workflows run smoothly.
 
 ## Roadmap
 
-See the [open issues](https://github.com/GITHUB_USERNAME/REPO_SLUG/issues) for a list of proposed features (and known
+See the [open issues](https://github.com/Payadel/assert/issues) for a list of proposed features (and known
 issues).
 
-- [Top Feature Requests](https://github.com/GITHUB_USERNAME/REPO_SLUG/issues?q=label%3Aenhancement+is%3Aopen+sort%3Areactions-%2B1-desc) (
+- [Top Feature Requests](https://github.com/Payadel/assert/issues?q=label%3Aenhancement+is%3Aopen+sort%3Areactions-%2B1-desc) (
   Add your votes using the 👍 reaction)
-- [Top Bugs](https://github.com/GITHUB_USERNAME/REPO_SLUG/issues?q=is%3Aissue+is%3Aopen+label%3Abug+sort%3Areactions-%2B1-desc) (
+- [Top Bugs](https://github.com/Payadel/assert/issues?q=is%3Aissue+is%3Aopen+label%3Abug+sort%3Areactions-%2B1-desc) (
   Add your votes using the 👍 reaction)
-- [Newest Bugs](https://github.com/GITHUB_USERNAME/REPO_SLUG/issues?q=is%3Aopen+is%3Aissue+label%3Abug)
+- [Newest Bugs](https://github.com/Payadel/assert/issues?q=is%3Aopen+is%3Aissue+label%3Abug)
 
 ## Support
 
-> **[?]**
-> Provide additional ways to contact the project maintainer/maintainers.
-
 Reach out to the maintainer at one of the following places:
 
-- [GitHub issues](https://github.com/GITHUB_USERNAME/REPO_SLUG/issues/new?assignees=&labels=question&template=SUPPORT_QUESTION.md&title=support%3A+)
-- Contact options listed on [this GitHub profile](https://github.com/GITHUB_USERNAME)
-
-## Used By
-
-This project is used by the following companies:
-
-- Company 1
-- Company 2
+- [GitHub issues](https://github.com/Payadel/assert/issues/new?assignees=&labels=question&template=SUPPORT_QUESTION.md&title=support%3A+)
 
 ## FAQ
 
-#### Question 1
+#### What is assert?
 
-Answer 1
+assert is a GitHub Action that provides a set of assertions to compare different values in your GitHub Actions
+workflows. It allows you to verify that a value is equal to an expected value, is contained in a certain set of values,
+or matches a specific pattern, among other types of comparisons.
 
-#### Question 2
+#### How does assert work?
 
-Answer 2
+assert is integrated into your GitHub Actions workflow as a step. When executed, it compares the value of a given input
+against the expected output specified in the action's parameters. If the comparison fails, the action will output an
+error message indicating which assertion failed and what the expected and actual values were.
+
+#### How do I integrate assert into my workflow?
+
+To use assert, you can add a step to your workflow that uses the `Payadel/assert` action, and provide the appropriate
+parameters for the desired assertions. You can customize the output behavior of the action to include detailed
+information about the expected and actual values, and configure it to `fail-fast`, stopping the entire workflow if an
+assertion fails.
+
+#### What types of comparisons can assert perform?
+
+assert provides a variety of assertion types,
+including `Equals`, `Not-Equals`, `True`, `False`, `In`, `Not-In`, `Greater`, `Greater-Equal`, `Less`, `Less-Equal`,
+and `Regex`. These assertions can be used to compare different types of values, such as strings, numbers, and booleans,
+and check for specific patterns or values.
+
+#### Is assert reliable and safe to use?
+
+**Yes,** assert is a reliable and safe GitHub Action that has been thoroughly tested and written in TypeScript. Its
+assertions are designed to be accurate and precise, ensuring that your workflows run smoothly and without errors.
+However, as with any tool, it's important to use assert appropriately and validate its behavior to ensure that it meets
+your requirements.
 
 ## Project assistance
 
-If you want to say **thank you** or/and support active development of PROJECT_NAME:
+If you want to say **thank you** or/and support active development of `Assert`:
 
-- Add a [GitHub Star](https://github.com/GITHUB_USERNAME/REPO_SLUG) to the project.
-- Tweet about the PROJECT_NAME.
+- Add a [GitHub Star](https://github.com/Payadel/assert) to the project.
+- Tweet about the `Assert`.
 - Write interesting articles about the project on [Dev.to](https://dev.to/), [Medium](https://medium.com/) or your
   personal blog.
 
-Together, we can make PROJECT_NAME **better**!
+Together, we can make `Assert` **better**!
 
 ## Contributing
 
@@ -197,14 +276,14 @@ Please read [our contribution guidelines](docs/CONTRIBUTING.md), and thank you f
 
 ## Authors & contributors
 
-The original setup of this repository is by [FULL_NAME](https://github.com/GITHUB_USERNAME).
+The original setup of this repository is by [Payadel](https://github.com/Payadel).
 
 For a full list of all authors and contributors,
-see [the contributors page](https://github.com/GITHUB_USERNAME/REPO_SLUG/contributors).
+see [the contributors page](https://github.com/Payadel/assert/contributors).
 
 ## Security
 
-PROJECT_NAME follows good practices of security, but 100% security cannot be assured. PROJECT_NAME is provided **"as
+`Assert` follows good practices of security, but 100% security cannot be assured. `Assert` is provided **"as
 is"** without any **warranty**.
 
 _For more information and to report security issues, please refer to our [security documentation](docs/SECURITY.md)._
@@ -214,17 +293,3 @@ _For more information and to report security issues, please refer to our [securi
 This project is licensed under the **GPLv3**.
 
 See [LICENSE](LICENSE) for more information.
-
-## Acknowledgements
-
-> **[?]**
-> If your work was funded by any organization or institution, acknowledge their support here.
-> In addition, if your work relies on other software libraries, or was inspired by looking at other work, it is appropriate to acknowledge this intellectual debt too.
-
-## Related
-
-Here are some related projects
-
-[Awesome README](https://github.com/matiassingers/awesome-readme)
-
-

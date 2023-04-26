@@ -6,13 +6,23 @@ author: 'Payadel'
 # from the workflow file and are consumed in our code
 inputs:
   inputs:
-    description: 'Variables with yaml structure'
+    description: 'Inputs with yaml structure'
     required: true
+  fail-fast:
+    default: 'false'
+    required: false
+    description: 'Fail with the first error or not?'
+  verbose:
+    default: 'false'
+    required: false
+    description: 'If it is false, only errors will be displayed, otherwise all messages will be displayed.'
 outputs:
   success:
-    description: 'Are assert variables correct or not?'
-  errors:
-    description: 'List of errors with json structure'
+    description: 'Are assert variables correct or not? (boolean)'
+  messagesStr:
+    description: 'Messages include errors and success messages with string type.'
+  messages:
+    description: 'Messages with object format include type of message (success or error) and message'
 
 runs:
   using: 'node16'
