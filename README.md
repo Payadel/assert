@@ -38,7 +38,7 @@ To use Assert GitHub Action in your workflow, simply add the following step to y
 
 ```yaml
 - name: Test Results
-  uses: Payadel/assert@v1
+  uses: Payadel/assert@v1.0.0
   with:
     fail-fast: false
     verbose: true
