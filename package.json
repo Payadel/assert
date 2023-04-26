@@ -1,6 +1,6 @@
 {
   "name": "assert",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "Assert your Github action variables to make sure they are correct.",
   "main": "lib/main.js",
   "scripts": {
