@@ -66,9 +66,28 @@ An assertion object consists of the following properties:
 - **expected:** The expected value for the assertion.
 - **actual:** The actual value to be tested.
 
+#### Sample
+
+```yaml
+    inputs: |
+      - name: test equality
+        type: Equals
+        expected: 'valid value'
+        actual: ${{ steps.prev_step_id.outputs.variable }}
+```
+
 ### Type: True and False
 
 - **input:** The value to be tested.
+
+#### Sample
+
+```yaml
+    inputs: |
+      - name: test True
+        type: True
+        input: ${{ steps.prev_step_id.outputs.success }}
+```
 
 ### Type: In and Not-In
 
@@ -76,30 +95,91 @@ An assertion object consists of the following properties:
 - **container:** The string to search within.
 - **case_sensitive (boolean):** Is the search case-sensitive or not? (default is `false`)
 
+#### Sample
+
+```yaml
+    inputs: |
+      - name: test In
+        type: In
+        member: 'World'
+        container: ${{ steps.prev_step_id.outputs.message }}
+        case_sensitive: true
+```
+
 ### Type: Greater
 
 - **target (number):** The number to be checked.
 - **greater_than (number):** The value to compare against for Greater assertions.
+
+#### Sample
+
+```yaml
+    inputs: |
+      - name: test Greater
+        type: Greater
+        greater_than: 1
+        target: ${{ steps.prev_step_id.outputs.number }}
+```
 
 ### Type: Greater-Equal
 
 - **target (number):** The number to be checked.
 - **greater_equal:** The value to compare against for Greater-Equal assertions.
 
+#### Sample
+
+```yaml
+    inputs: |
+      - name: test Greater or Equal
+        type: Greater-Equal
+        greater_equal: 1
+        target: ${{ steps.prev_step_id.outputs.number }}
+```
+
 ### Type: Less
 
 - **target (number):** The number to be checked.
 - **less_than (number):** The value to compare against for Less assertions.
 
+#### Sample
+
+```yaml
+    inputs: |
+      - name: test Less
+        type: Less
+        less_than: 100
+        target: ${{ steps.prev_step_id.outputs.number }}
+```
+
 ### Type: Less-Equal
 
 - **target (number):** The number to be checked.
-- **less_equal (number):** The value to compare against for Greater-Equal assertions.
+- **less_equal (number):** The value to compare against for Less-Equal assertions.
+
+#### Sample
+
+```yaml
+    inputs: |
+      - name: test Less Equal
+        type: Less-Equal
+        less_equal: 100
+        target: ${{ steps.prev_step_id.outputs.number }}
+```
 
 ### Type: Regex
 
 - **regex:** The regular expression to match against for Regex assertions.
 - **text:** The text to be checked.
+
+#### Sample
+
+```yaml
+    inputs: |
+      - name: test regex
+        type: Regex
+        regex: '[0-9]+'
+        text: ${{ steps.prev_step_id.outputs.number }}
+```
 
 ## CHANGELOG
 
