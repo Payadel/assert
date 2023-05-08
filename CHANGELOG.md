@@ -1,7 +1,31 @@
 # Changelog
 
-All notable changes to this project will be documented in this file.
-See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
+All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
+
+### [1.0.1](https://github.com/Payadel/assert/compare/v1.0.0...v1.0.1) (2023-05-08)
+
+
+### Refactors
+
+* `mockError` ([57d2178](https://github.com/Payadel/assert/commit/57d2178142b5e0a3c40770e8e331a75f6488f1f5))
+
+
+### Development: CI/CD, Build, etc
+
+* update release action ([6aff55c](https://github.com/Payadel/assert/commit/6aff55c1cfb64a83c2c8e28156152e9b8b21078f))
+
+
+### Documents
+
+* add `Action Outputs` to README.md ([3d1cd47](https://github.com/Payadel/assert/commit/3d1cd471af203f1c2f08b36bbddee875f010da42))
+* update README.md ([22950cd](https://github.com/Payadel/assert/commit/22950cde25b26209e02815b9e5e81bd6019dc276))
+* update version in README.md ([f440fa3](https://github.com/Payadel/assert/commit/f440fa3a83ebc2a0cb16bfa8b1cf555856c2b96f))
+
+
+### Fixes
+
+* fix assert false and true type ([cd18629](https://github.com/Payadel/assert/commit/cd1862956f1b6ff82361c77aafe07c4cbe435e95))
+* fix yaml validation and messages ([2d0577f](https://github.com/Payadel/assert/commit/2d0577f7be7c4b904f5de27b45788733e5681d69))
 
 ## 1.0.0 (2023-04-26)
 
