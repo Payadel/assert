@@ -26,6 +26,11 @@ function isTrue(input) {
             case "boolean":
                 return resolve(input);
             case "string":
+                input = input.toLowerCase();
+                if (input === "true")
+                    return resolve(true);
+                if (input === "false" || input === "null" || input === "undefined")
+                    return resolve(false);
                 return resolve(Boolean(input));
             case "number":
                 return resolve(input === 0);
