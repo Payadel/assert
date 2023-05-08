@@ -346,9 +346,9 @@ function getInputOrDefault(name, default_value = null) {
 function ensureYamlValid(parsedYaml) {
     for (const item of parsedYaml) {
         if (!item.name)
-            throw new Error(`The 'name' parameter is required.\nItem:${item}`);
+            throw new Error(`The 'name' parameter is required.\nItem:\n\t${JSON.stringify(item)}`);
         if (!item.type)
-            throw new Error(`The 'type' parameter is required.\nItem:${item}`);
+            throw new Error(`The 'type' parameter is required.\nItem:\n\t${JSON.stringify(item)}`);
     }
 }
 //# sourceMappingURL=inputs.js.map
