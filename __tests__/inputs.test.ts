@@ -50,7 +50,7 @@ describe("getInputs", () => {
             mockGetInput(name, "This is an invalid yaml")
         );
         await expect(getInputs()).rejects.toThrowError(
-            "The 'name' parameter is required and must be a string."
+            `The 'name' parameter is required.\nItem:\n\t`
         );
 
         jest.spyOn(core, "getInput").mockImplementation((name: string) =>
@@ -66,7 +66,7 @@ describe("getInputs", () => {
             )
         );
         await expect(getInputs()).rejects.toThrowError(
-            "The 'type' parameter is required and must be a string."
+            `The 'type' parameter is required.\nItem:\n\t{"name":"Test2","expected":"hello","actual":"world"}`
         );
     });
 });

@@ -26,6 +26,13 @@ function isTrue(input) {
             case "boolean":
                 return resolve(input);
             case "string":
+                input = input.toLowerCase();
+                if (input === "true")
+                    return resolve(true);
+                if (input === "false" ||
+                    input === "null" ||
+                    input === "undefined")
+                    return resolve(false);
                 return resolve(Boolean(input));
             case "number":
                 return resolve(input === 0);
@@ -338,10 +345,10 @@ function getInputOrDefault(name, default_value = null) {
 }
 function ensureYamlValid(parsedYaml) {
     for (const item of parsedYaml) {
-        if (!item.name || typeof item.name !== "string")
-            throw new Error("The 'name' parameter is required and must be a string.");
-        if (!item.type || typeof item.type !== "string")
-            throw new Error("The 'type' parameter is required and must be a string.");
+        if (!item.name)
+            throw new Error(`The 'name' parameter is required.\nItem:\n\t${JSON.stringify(item)}`);
+        if (!item.type)
+            throw new Error(`The 'type' parameter is required.\nItem:\n\t${JSON.stringify(item)}`);
     }
 }
 //# sourceMappingURL=inputs.js.map

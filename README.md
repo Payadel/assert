@@ -70,10 +70,10 @@ An assertion object consists of the following properties:
 
 ```yaml
     inputs: |
-      - name: test equality
-        type: Equals
+      - name: 'test equality'
+        type: 'Equals'
         expected: 'valid value'
-        actual: ${{ steps.prev_step_id.outputs.variable }}
+        actual: '${{ steps.prev_step_id.outputs.variable }}'
 ```
 
 ### Type: True and False
@@ -84,9 +84,9 @@ An assertion object consists of the following properties:
 
 ```yaml
     inputs: |
-      - name: test True
-        type: True
-        input: ${{ steps.prev_step_id.outputs.success }}
+      - name: 'test True'
+        type: 'True'
+        input: '${{ steps.prev_step_id.outputs.success }}'
 ```
 
 ### Type: In and Not-In
@@ -99,10 +99,10 @@ An assertion object consists of the following properties:
 
 ```yaml
     inputs: |
-      - name: test In
-        type: In
+      - name: 'test In'
+        type: 'In'
         member: 'World'
-        container: ${{ steps.prev_step_id.outputs.message }}
+        container: '${{ steps.prev_step_id.outputs.message }}'
         case_sensitive: true
 ```
 
@@ -115,8 +115,8 @@ An assertion object consists of the following properties:
 
 ```yaml
     inputs: |
-      - name: test Greater
-        type: Greater
+      - name: 'test Greater'
+        type: 'Greater'
         greater_than: 1
         target: ${{ steps.prev_step_id.outputs.number }}
 ```
@@ -130,8 +130,8 @@ An assertion object consists of the following properties:
 
 ```yaml
     inputs: |
-      - name: test Greater or Equal
-        type: Greater-Equal
+      - name: 'test Greater or Equal'
+        type: 'Greater-Equal'
         greater_equal: 1
         target: ${{ steps.prev_step_id.outputs.number }}
 ```
@@ -145,8 +145,8 @@ An assertion object consists of the following properties:
 
 ```yaml
     inputs: |
-      - name: test Less
-        type: Less
+      - name: 'test Less'
+        type: 'Less'
         less_than: 100
         target: ${{ steps.prev_step_id.outputs.number }}
 ```
@@ -160,8 +160,8 @@ An assertion object consists of the following properties:
 
 ```yaml
     inputs: |
-      - name: test Less Equal
-        type: Less-Equal
+      - name: 'test Less Equal'
+        type: 'Less-Equal'
         less_equal: 100
         target: ${{ steps.prev_step_id.outputs.number }}
 ```
@@ -175,10 +175,10 @@ An assertion object consists of the following properties:
 
 ```yaml
     inputs: |
-      - name: test regex
+      - name: 'test regex'
         type: Regex
         regex: '[0-9]+'
-        text: ${{ steps.prev_step_id.outputs.number }}
+        text: '${{ steps.prev_step_id.outputs.number }}'
 ```
 
 ### Action Outputs

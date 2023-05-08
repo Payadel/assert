@@ -114,10 +114,22 @@ describe("assertTrue", () => {
     });
 
     it("should return a rejected promise with an error message when the input is false", async () => {
-        // Arrange
-        const input = false;
+        let input: boolean | string = false;
+        await expect(assertTrue(input)).rejects.toThrowError(
+            `❌ '${input}' is NOT TRUE`
+        );
 
-        // Act
+        input = "false";
+        await expect(assertTrue(input)).rejects.toThrowError(
+            `❌ '${input}' is NOT TRUE`
+        );
+
+        input = "null";
+        await expect(assertTrue(input)).rejects.toThrowError(
+            `❌ '${input}' is NOT TRUE`
+        );
+
+        input = "undefined";
         await expect(assertTrue(input)).rejects.toThrowError(
             `❌ '${input}' is NOT TRUE`
         );
@@ -169,14 +181,25 @@ describe("assertFalse", () => {
     });
 
     it("should return a resolved promise with a success message when the input is false", async () => {
-        // Arrange
-        const input = false;
+        let input: boolean | string = false;
+        await expect(assertFalse(input)).resolves.toBe(
+            `✅ '${input}' is FALSE`
+        );
 
-        // Act
-        const result = await assertFalse(input);
+        input = "false";
+        await expect(assertFalse(input)).resolves.toBe(
+            `✅ '${input}' is FALSE`
+        );
 
-        // Assert
-        expect(result).toBe(`✅ '${input}' is FALSE`);
+        input = "null";
+        await expect(assertFalse(input)).resolves.toBe(
+            `✅ '${input}' is FALSE`
+        );
+
+        input = "undefined";
+        await expect(assertFalse(input)).resolves.toBe(
+            `✅ '${input}' is FALSE`
+        );
     });
 
     it("should return a resolved promise with a success message when the input is not 0", async () => {
