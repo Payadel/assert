@@ -150,7 +150,7 @@ describe("run", () => {
 
         expect(Object.keys(output).length).toBe(2);
         expect(output["failed"]).toBe(
-            "The 'type' parameter is required and must be a string.\n"
+            `The 'type' parameter is required.\nItem:\n\t{"name":"Test2","expected":"hello","actual":"hello"}\n`
         );
         expect(output["error"]).toBe("Operation failed.\n");
     });

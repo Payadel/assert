@@ -35,13 +35,17 @@ function getInputOrDefault(name: string, default_value: any = null): string {
 
 function ensureYamlValid(parsedYaml: any): void {
     for (const item of parsedYaml) {
-        if (!item.name || typeof item.name !== "string")
+        if (!item.name)
             throw new Error(
-                "The 'name' parameter is required and must be a string."
+                `The 'name' parameter is required.\nItem:\n\t${JSON.stringify(
+                    item
+                )}`
             );
-        if (!item.type || typeof item.type !== "string")
+        if (!item.type)
             throw new Error(
-                "The 'type' parameter is required and must be a string."
+                `The 'type' parameter is required.\nItem:\n\t${JSON.stringify(
+                    item
+                )}`
             );
     }
 }
