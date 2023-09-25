@@ -37,7 +37,7 @@
     "@actions/core": "^1.10.0"
   },
   "devDependencies": {
-    "@action-validator/cli": "^0.5.2",
+    "@action-validator/cli": "^0.5.3",
     "@action-validator/core": "^0.5.1",
     "@types/jest": "^27.5.2",
     "@types/node": "^20.4.2",
