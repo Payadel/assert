@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.0.2](https://github.com/Payadel/assert/compare/v1.0.1...v1.0.2) (2024-11-08)
+
+
+### Development: CI/CD, Build, etc
+
+* fix test in build-test.yml ([ade79b9](https://github.com/Payadel/assert/commit/ade79b9da07d69b5bc86dfc57e665f43e50bf10d))
+* use `Payadel/inputs` in actions ([921b508](https://github.com/Payadel/assert/commit/921b5086cc7e23d294b6bec110e903da46f2e0a8))
+
+
+### Fixes
+
+* update packages ([507083c](https://github.com/Payadel/assert/commit/507083cfc0a66343c2ef51c3402e3d19d4cbc0d6))
+
 ### [1.0.1](https://github.com/Payadel/assert/compare/v1.0.0...v1.0.1) (2023-05-08)
 
 
