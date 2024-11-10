@@ -9,6 +9,7 @@ updates:
         update-types:
           - minor
           - patch
+    target-branch: "dev"
 
   - package-ecosystem: npm
     directory: /
@@ -24,3 +25,4 @@ updates:
         dependency-type: production
         update-types:
           - patch
+    target-branch: "dev"
