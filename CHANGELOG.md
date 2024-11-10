@@ -4,6 +4,13 @@ All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version)
 for commit guidelines.
 
+## [1.0.3](https://github.com/Payadel/assert/compare/v1.0.2...v1.0.3) (2024-11-10)
+
+
+### Bug Fixes
+
+* update package versions ([2adf2dc](https://github.com/Payadel/assert/commit/2adf2dca8aba5b9e6ee19ce639220a711af8d3c2))
+
 ### [1.0.2](https://github.com/Payadel/assert/compare/v1.0.1...v1.0.2) (2024-11-08)
 
 ### Development: CI/CD, Build, etc

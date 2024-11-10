@@ -1,7 +1,7 @@
 {
   "name": "assert",
   "description": "Assert your Github action variables to make sure they are correct.",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "author": "Payadel",
   "private": true,
   "homepage": "https://github.com/Payadel/assert",
