@@ -1,9 +1,9 @@
 import * as core from '@actions/core'
 
 export interface IOutput {
-  success: boolean
-  messagesStr: string
-  messages: any[]
+  success: boolean;
+  messagesStr: string;
+  messages: any[];
 }
 
 export function setOutputs(data: IOutput): void {

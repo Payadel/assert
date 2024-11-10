@@ -3,9 +3,9 @@ import { getBooleanInputOrDefault, getInputOrDefault } from './utility'
 import DefaultInputs from './configs'
 
 export interface IInputs {
-  inputsYaml: any[]
-  failFast: boolean
-  verbose: boolean
+  inputsYaml: any[];
+  failFast: boolean;
+  verbose: boolean;
 }
 
 export function getInputs(): IInputs {

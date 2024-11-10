@@ -1,39 +1,39 @@
-name: "Assert"
+name: 'Assert'
 description:
-  "Assert your Github action variables to make sure they are correct."
-author: "Payadel"
+  'Assert your Github action variables to make sure they are correct.'
+author: 'Payadel'
 
 # Add your action's branding here. This will appear on the GitHub Marketplace.
 branding:
-  color: "green"
+  color: 'green'
 
 # Define your inputs here.
 inputs:
   inputs:
-    description: "Inputs with yaml structure"
+    description: 'Inputs with yaml structure'
     required: true
   fail-fast:
-    default: "false"
+    default: 'false'
     required: false
-    description: "Fail with the first error or not?"
+    description: 'Fail with the first error or not?'
   verbose:
-    default: "false"
+    default: 'false'
     required: false
     description:
-      "If it is false, only errors will be displayed, otherwise all messages
-      will be displayed."
+      'If it is false, only errors will be displayed, otherwise all messages
+      will be displayed.'
 
 # Define your outputs here.
 outputs:
   success:
-    description: "Are all asserts true or not? (boolean)"
+    description: 'Are all asserts true or not? (boolean)'
   messagesStr:
     description:
-      "Messages include errors and success messages with string type."
+      'Messages include errors and success messages with string type.'
   messages:
     description:
-      "Messages with object format include type of message (success or error)
-      and message"
+      'Messages with object format include type of message (success or error)
+      and message'
 
 runs:
   using: node20

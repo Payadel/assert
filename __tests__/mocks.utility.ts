@@ -12,9 +12,9 @@ export const validInputYaml = `
     `
 
 export interface IInputMock {
-  name: string
-  givenValue?: string | boolean | number
-  defaultValue?: string
+  name: string;
+  givenValue?: string | boolean | number;
+  defaultValue?: string;
 }
 
 export function mockGetInput(

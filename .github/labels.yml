@@ -1,96 +1,96 @@
 ---
 # Semantic Versioning 2.0.0
-- name: "version-major"
+- name: 'version-major'
   color: b60205
   description:
-    "Incompatible API changes or breaks backward compatibility for users"
+    'Incompatible API changes or breaks backward compatibility for users'
 
-- name: "version-minor"
+- name: 'version-minor'
   color: 0e8a16
-  description: "Add functionality in a backwards compatible manner"
+  description: 'Add functionality in a backwards compatible manner'
 
-- name: "version-patch"
+- name: 'version-patch'
   color: C2E0C6
-  description: "Backwards compatible bug fixes"
+  description: 'Backwards compatible bug fixes'
 
 # Priority
-- name: "priority-critical"
+- name: 'priority-critical'
   color: ee0701
-  description: "Must be addressed as soon as possible."
+  description: 'Must be addressed as soon as possible.'
 
-- name: "priority-high"
+- name: 'priority-high'
   color: b60205
   description:
-    "After critical issues are fixed, these should be dealt with before any
-    further issues."
+    'After critical issues are fixed, these should be dealt with before any
+    further issues.'
 
-- name: "priority-medium"
+- name: 'priority-medium'
   color: D53B33
-  description: "This issue may be useful, and needs some attention."
+  description: 'This issue may be useful, and needs some attention.'
 
-- name: "priority-low"
+- name: 'priority-low'
   color: e4ea8a
-  description: "Nice addition, maybe... someday..."
+  description: 'Nice addition, maybe... someday...'
 
 # Scope
-- name: "scope-documentation"
+- name: 'scope-documentation'
   color: 0052cc
-  description: "Improvements or additions to documentation"
+  description: 'Improvements or additions to documentation'
 
-- name: "scope-enhancement"
+- name: 'scope-enhancement'
   color: a2eeef
   description:
-    "Enhancement of the code, Refactor, not introducing new features."
+    'Enhancement of the code, Refactor, not introducing new features.'
 
-- name: "scope-bug"
+- name: 'scope-bug'
   color: d73a4a
   description: "Something isn't working"
 
-- name: "scope-performance"
+- name: 'scope-performance'
   color: 5E4BDC
   description:
-    "Improving performance of the project, not introducing new features."
+    'Improving performance of the project, not introducing new features.'
 
-- name: "scope-new-feature"
+- name: 'scope-new-feature'
   color: 07A297
-  description: "New features or options."
+  description: 'New features or options.'
 
-- name: "scope-security"
+- name: 'scope-security'
   color: ee0701
-  description: "Addressing a vulnerability or security risk in this project."
+  description: 'Addressing a vulnerability or security risk in this project.'
 
 # Status
-- name: "status-duplicate"
+- name: 'status-duplicate'
   color: cfd3d7
-  description: "This issue or pull request already exists"
+  description: 'This issue or pull request already exists'
 
-- name: "status-in-progress"
+- name: 'status-in-progress'
   color: fbca04
-  description: "Issue is currently being worked on by a developer."
+  description: 'Issue is currently being worked on by a developer.'
 
-- name: "status-stale"
+- name: 'status-stale'
   color: cfd3d7
-  description: "No activity for quite some time."
+  description: 'No activity for quite some time.'
 
-- name: "status-incomplete"
+- name: 'status-incomplete'
   color: B5EEB0
-  description: "Missing information."
+  description: 'Missing information.'
 
-- name: "status-invalid"
+- name: 'status-invalid'
   color: F25D8F
   description:
     "This is off-topic, spam, or otherwise doesn't apply to this project."
 
-- name: "status-wontfix"
+- name: 'status-wontfix'
   color: ffffff
-  description: "This will not be worked on"
+  description: 'This will not be worked on'
 
 # Contributors
-- name: "good first issue"
+- name: 'good first issue'
   color: 7057ff
   description:
-    "Good first issue for people wanting to contribute to this project."
+    'Good first issue for people wanting to contribute to this project.'
 
-- name: "help-wanted"
+- name: 'help-wanted'
   color: 008672
-  description: "Extra attention is needed"
+  description: 'Extra attention is needed'

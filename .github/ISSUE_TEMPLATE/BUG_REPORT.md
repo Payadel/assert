@@ -3,11 +3,11 @@ name: Bug Report
 
 about: Create a report to improve
 
-title: "bug: "
+title: 'bug: '
 
-labels: "scope-bug"
+labels: 'scope-bug'
 
-assignees: ""
+assignees: ''
 ---
 
 # Bug Report

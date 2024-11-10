@@ -3,11 +3,11 @@ name: Support Question
 
 about: Question on how to use this project
 
-title: "support: "
+title: 'support: '
 
-labels: "help-wanted"
+labels: 'help-wanted'
 
-assignees: ""
+assignees: ''
 ---
 
 # Support Question

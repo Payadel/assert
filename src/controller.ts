@@ -15,14 +15,14 @@ import {
 } from './asserts'
 
 export interface IMessage {
-  type: 'error' | 'success'
-  message: string
+  type: 'error' | 'success';
+  message: string;
 }
 
 export interface IControllerOutput {
-  success: boolean
-  messages: IMessage[]
-  messagesStr: string
+  success: boolean;
+  messages: IMessage[];
+  messagesStr: string;
 }
 
 export function controller(inputs: IInputs): IControllerOutput {
@@ -112,8 +112,8 @@ export function controller(inputs: IInputs): IControllerOutput {
 }
 
 interface IResult {
-  success: boolean
-  messages: string
+  success: boolean;
+  messages: string;
 }
 
 function tryFunction(func: () => string): IResult {

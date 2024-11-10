@@ -63,7 +63,9 @@ export function isIn(
     throw new Error(`❌ Expected to get a string but got '${typeof member}'`)
   }
   if (typeof container !== 'string') {
-    throw new Error(`❌ Expected to get a string but got '${typeof container}'`)
+    throw new Error(
+      `❌ Expected to get a string but got '${typeof container}'`
+    )
   }
 
   const memberStr = caseSensitive ? member : member.toLowerCase()
@@ -149,7 +151,9 @@ export function assertLess(target: any, less_than: any): string {
     throw new Error(`❌ Expected to get a number but got '${typeof target}'`)
   }
   if (typeof less_than !== 'number') {
-    throw new Error(`❌ Expected to get a number but got '${typeof less_than}'`)
+    throw new Error(
+      `❌ Expected to get a number but got '${typeof less_than}'`
+    )
   }
 
   if (target < less_than) {
@@ -164,7 +168,9 @@ export function assertLessEqual(target: any, less_than: any): string {
     throw new Error(`❌ Expected to get a number but got '${typeof target}'`)
   }
   if (typeof less_than !== 'number') {
-    throw new Error(`❌ Expected to get a number but got '${typeof less_than}'`)
+    throw new Error(
+      `❌ Expected to get a number but got '${typeof less_than}'`
+    )
   }
 
   if (target <= less_than) {

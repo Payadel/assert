@@ -5,9 +5,9 @@ about:
   Provide your feedback for the existing codebase. Suggest a better solution for
   algorithms, development tools, etc.
 
-title: "dev: "
+title: 'dev: '
 
-labels: "enhancement"
+labels: 'enhancement'
 
-assignees: ""
+assignees: ''
 ---
