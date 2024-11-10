@@ -1,4 +1,4 @@
-import * as core from '@actions/core'
+import * as core from '@actions/core';
 
 export const validInputYaml = `
       - name: Test1
@@ -9,7 +9,7 @@ export const validInputYaml = `
         type: not-equals
         expected: hello
         actual: world
-    `
+    `;
 
 export interface IInputMock {
   name: string;
@@ -22,25 +22,25 @@ export function mockGetInput(
   mockInputs: IInputMock[],
   options?: core.InputOptions
 ): string {
-  name = name.toLowerCase()
+  name = name.toLowerCase();
   const targetMock = mockInputs.find(
     mockInput => mockInput.name.toLowerCase() == name
-  )
+  );
 
-  let result: any = ''
+  let result: any = '';
   if (targetMock) {
     result = targetMock.givenValue
       ? targetMock.givenValue
-      : targetMock.defaultValue
+      : targetMock.defaultValue;
   }
 
   if (options) {
     if (options.required && !result)
-      throw new Error(`Input required and not supplied: ${name}`)
-    if (result && options.trimWhitespace) result = result.toString().trim()
+      throw new Error(`Input required and not supplied: ${name}`);
+    if (result && options.trimWhitespace) result = result.toString().trim();
   }
 
-  return result
+  return result;
 }
 
 export function mockSetOutput(
@@ -48,5 +48,5 @@ export function mockSetOutput(
   value: any,
   output: { [key: string]: any }
 ): void {
-  output[name] = value
+  output[name] = value;
 }

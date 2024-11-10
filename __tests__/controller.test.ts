@@ -1,5 +1,5 @@
-import { IInputs } from '../src/inputs'
-import { controller, IControllerOutput } from '../src/controller'
+import { IInputs } from '../src/inputs';
+import { controller, IControllerOutput } from '../src/controller';
 
 describe('run', () => {
   it('should run all input assertions and return a result object with success status and messages', () => {
@@ -140,9 +140,9 @@ describe('run', () => {
       ],
       verbose: true,
       failFast: false
-    }
+    };
 
-    const result = controller(inputs)
+    const result = controller(inputs);
 
     assert(
       result,
@@ -150,38 +150,38 @@ describe('run', () => {
       17,
       14,
       'Test1.1: ✅ The expected (5) is EQUAL to actual (5)\n' +
-      'Test1.2: ❌ The expected (5) is NOT EQUAL to actual (10)\n' +
-      'Test2.1: ✅ The expected (hello) is NOT EQUAL to actual (world)\n' +
-      'Test2.2: ❌ The expected (hello) is EQUAL to actual (hello)\n' +
-      'Test3.1: ✅ \'true\' is TRUE\n' +
-      'Test3.2: ✅ \'true\' is TRUE\n' +
-      'Test3.3: ❌ \'\' is NOT TRUE\n' +
-      'Test3.4: ❌ \'null\' is NOT TRUE\n' +
-      'Test3.5: ❌ \'false\' is NOT TRUE\n' +
-      'Test4.1: ❌ \'true\' is NOT FALSE\n' +
-      'Test4.2: ❌ \'true\' is NOT FALSE\n' +
-      'Test4.3: ✅ \'\' is FALSE\n' +
-      'Test4.4: ✅ \'null\' is FALSE\n' +
-      'Test4.5: ✅ \'false\' is FALSE\n' +
-      'Test5.1: ✅ \'message\' is IN \'this is a message\' with case sensitive check.\n' +
-      'Test5.2: ❌ \'Message\' is NOT IN \'this is a message\' with case sensitive check.\n' +
-      'Test6.1: ✅ \'hello\' is NOT IN \'this is a message\' with case insensitive check.\n' +
-      'Test6.2: ✅ \'Message\' is NOT IN \'this is a message\' with case sensitive check.\n' +
-      'Test6.3: ❌ \'Message\' is IN \'this is a message\' with case insensitive check.\n' +
-      'Test7.1: ✅ 10 is GREATER THAN 5\n' +
-      'Test7.2: ❌ 10 is NOT GREATER THAN 10\n' +
-      'Test8.1: ✅ 7 is GREATER THAN or EQUAL to 7\n' +
-      'Test8.2: ✅ 10 is GREATER THAN or EQUAL to 7\n' +
-      'Test9.1: ✅ 3 is LESS THAN 5\n' +
-      'Test9.2: ❌ 10 is NOT LESS THAN 5\n' +
-      'Test10.1: ✅ 2 is LESS THAN or EQUAL to 2\n' +
-      'Test10.2: ❌ 10 is NOT LESS THAN or EQUAL to 2\n' +
-      'Test10.3: ✅ 0 is LESS THAN or EQUAL to 2\n' +
-      'Test11.1: ✅ \'Hello, World!\' MATCHES \'/hello/i\'\n' +
-      'Test11.2: ❌ \'Hello, World!\' does NOT MATCH \'/message/i\'\n' +
-      'Test12: ❌ The type \'unsupported\' is not supported.\n'
-    )
-  })
+        'Test1.2: ❌ The expected (5) is NOT EQUAL to actual (10)\n' +
+        'Test2.1: ✅ The expected (hello) is NOT EQUAL to actual (world)\n' +
+        'Test2.2: ❌ The expected (hello) is EQUAL to actual (hello)\n' +
+        "Test3.1: ✅ 'true' is TRUE\n" +
+        "Test3.2: ✅ 'true' is TRUE\n" +
+        "Test3.3: ❌ '' is NOT TRUE\n" +
+        "Test3.4: ❌ 'null' is NOT TRUE\n" +
+        "Test3.5: ❌ 'false' is NOT TRUE\n" +
+        "Test4.1: ❌ 'true' is NOT FALSE\n" +
+        "Test4.2: ❌ 'true' is NOT FALSE\n" +
+        "Test4.3: ✅ '' is FALSE\n" +
+        "Test4.4: ✅ 'null' is FALSE\n" +
+        "Test4.5: ✅ 'false' is FALSE\n" +
+        "Test5.1: ✅ 'message' is IN 'this is a message' with case sensitive check.\n" +
+        "Test5.2: ❌ 'Message' is NOT IN 'this is a message' with case sensitive check.\n" +
+        "Test6.1: ✅ 'hello' is NOT IN 'this is a message' with case insensitive check.\n" +
+        "Test6.2: ✅ 'Message' is NOT IN 'this is a message' with case sensitive check.\n" +
+        "Test6.3: ❌ 'Message' is IN 'this is a message' with case insensitive check.\n" +
+        'Test7.1: ✅ 10 is GREATER THAN 5\n' +
+        'Test7.2: ❌ 10 is NOT GREATER THAN 10\n' +
+        'Test8.1: ✅ 7 is GREATER THAN or EQUAL to 7\n' +
+        'Test8.2: ✅ 10 is GREATER THAN or EQUAL to 7\n' +
+        'Test9.1: ✅ 3 is LESS THAN 5\n' +
+        'Test9.2: ❌ 10 is NOT LESS THAN 5\n' +
+        'Test10.1: ✅ 2 is LESS THAN or EQUAL to 2\n' +
+        'Test10.2: ❌ 10 is NOT LESS THAN or EQUAL to 2\n' +
+        'Test10.3: ✅ 0 is LESS THAN or EQUAL to 2\n' +
+        "Test11.1: ✅ 'Hello, World!' MATCHES '/hello/i'\n" +
+        "Test11.2: ❌ 'Hello, World!' does NOT MATCH '/message/i'\n" +
+        "Test12: ❌ The type 'unsupported' is not supported.\n"
+    );
+  });
 
   it('set fail fast true. should break with first error.', () => {
     const inputs: IInputs = {
@@ -199,20 +199,20 @@ describe('run', () => {
       ],
       verbose: true,
       failFast: true
-    }
+    };
 
-    const result = controller(inputs)
+    const result = controller(inputs);
 
     assert(
       result,
       false,
       2,
       1,
-      'Test1.1: ✅ \'true\' is TRUE\n' +
-      'Test1.2: ✅ \'true\' is TRUE\n' +
-      'Test1.3: ❌ \'\' is NOT TRUE\n'
-    )
-  })
+      "Test1.1: ✅ 'true' is TRUE\n" +
+        "Test1.2: ✅ 'true' is TRUE\n" +
+        "Test1.3: ❌ '' is NOT TRUE\n"
+    );
+  });
 
   it('all asserts are valid', () => {
     const inputs: IInputs = {
@@ -225,23 +225,23 @@ describe('run', () => {
       ],
       verbose: true,
       failFast: true
-    }
+    };
 
-    const result = controller(inputs)
+    const result = controller(inputs);
 
     assert(
       result,
       true,
       5,
       0,
-      'Test1.1: ✅ \'true\' is TRUE\n' +
-      'Test1.2: ✅ \'true\' is TRUE\n' +
-      'Test2.1: ✅ \'\' is FALSE\n' +
-      'Test2.2: ✅ \'null\' is FALSE\n' +
-      'Test2.3: ✅ \'false\' is FALSE\n'
-    )
-  })
-})
+      "Test1.1: ✅ 'true' is TRUE\n" +
+        "Test1.2: ✅ 'true' is TRUE\n" +
+        "Test2.1: ✅ '' is FALSE\n" +
+        "Test2.2: ✅ 'null' is FALSE\n" +
+        "Test2.3: ✅ 'false' is FALSE\n"
+    );
+  });
+});
 
 function assert(
   result: IControllerOutput,
@@ -250,25 +250,25 @@ function assert(
   expectedFailureMessages: number,
   expectedMessageStr: string
 ): void {
-  expect(result.success).toBe(expectedSuccess)
+  expect(result.success).toBe(expectedSuccess);
 
   expect(result.messages.length).toBe(
     expectedSuccessMessages + expectedFailureMessages
-  )
+  );
 
   expect(
     result.messages.filter(message => message.type === 'error').length
-  ).toBe(expectedFailureMessages)
+  ).toBe(expectedFailureMessages);
   expect(
     result.messages.filter(message => message.type === 'success').length
-  ).toBe(expectedSuccessMessages)
+  ).toBe(expectedSuccessMessages);
 
-  expect(result.messagesStr).toBe(expectedMessageStr)
+  expect(result.messagesStr).toBe(expectedMessageStr);
 
-  const splitMessages = expectedMessageStr.trim().split('\n')
+  const splitMessages = expectedMessageStr.trim().split('\n');
   for (let i = 0; i < splitMessages.length; i++) {
-    const success = splitMessages[i].includes('✅')
-    expect(result.messages[i].type).toBe(success ? 'success' : 'error')
-    expect(result.messages[i].message).toBe(splitMessages[i])
+    const success = splitMessages[i].includes('✅');
+    expect(result.messages[i].type).toBe(success ? 'success' : 'error');
+    expect(result.messages[i].message).toBe(splitMessages[i]);
   }
 }

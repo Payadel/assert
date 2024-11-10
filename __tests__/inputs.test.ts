@@ -1,6 +1,6 @@
-import { getInputs, IInputs } from '../src/inputs'
-import * as core from '@actions/core'
-import { mockGetInput, validInputYaml } from './mocks.utility'
+import { getInputs, IInputs } from '../src/inputs';
+import * as core from '@actions/core';
+import { mockGetInput, validInputYaml } from './mocks.utility';
 
 describe('getInputs', () => {
   it('should parse YAML input and return IInputs', () => {
@@ -19,7 +19,7 @@ describe('getInputs', () => {
           givenValue: true
         }
       ])
-    )
+    );
 
     const expectedInputs: IInputs = {
       inputsYaml: [
@@ -33,24 +33,24 @@ describe('getInputs', () => {
       ],
       failFast: true,
       verbose: true
-    }
-    const inputs = getInputs()
-    expect(inputs).toEqual(expectedInputs)
-  })
+    };
+    const inputs = getInputs();
+    expect(inputs).toEqual(expectedInputs);
+  });
 
   it('give invalid inputs. should throw an error', () => {
     jest
       .spyOn(core, 'getInput')
-      .mockImplementation((name: string) => mockGetInput(name, []))
-    expect(() => getInputs()).toThrow('parsedYaml is not iterable')
+      .mockImplementation((name: string) => mockGetInput(name, []));
+    expect(() => getInputs()).toThrow('parsedYaml is not iterable');
 
     jest
       .spyOn(core, 'getInput')
       .mockImplementation((name: string) =>
         mockGetInput(name, [{ name: 'inputs', givenValue: '    ' }])
-      )
-    expect(() => getInputs()).toThrow('parsedYaml is not iterable')
-  })
+      );
+    expect(() => getInputs()).toThrow('parsedYaml is not iterable');
+  });
 
   it('give invalid yaml. should throw an error', () => {
     jest
@@ -59,10 +59,10 @@ describe('getInputs', () => {
         mockGetInput(name, [
           { name: 'inputs', givenValue: ' This is an invalid yaml   ' }
         ])
-      )
+      );
     expect(() => getInputs()).toThrow(
       `The 'name' parameter is required.\nItem:\n\t`
-    )
+    );
 
     jest.spyOn(core, 'getInput').mockImplementation((name: string) =>
       mockGetInput(name, [
@@ -77,9 +77,9 @@ describe('getInputs', () => {
     `
         }
       ])
-    )
+    );
     expect(() => getInputs()).toThrow(
       `The 'type' parameter is required.\nItem:\n\t{"name":"Test2","expected":"hello","actual":"world"}`
-    )
-  })
-})
+    );
+  });
+});

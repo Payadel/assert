@@ -3,7 +3,7 @@
  */
 /* istanbul ignore file */
 
-import run from './main'
+import run from './main';
 
 // eslint-disable-next-line @typescript-eslint/no-floating-promises
-run()
+run();

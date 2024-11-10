@@ -1,17 +1,17 @@
-import * as core from '@actions/core'
+import * as core from '@actions/core';
 import {
   getBooleanInputOrDefault,
   getInputOrDefault,
   getNumberInputOrDefault
-} from '../src/utility'
-import { mockGetInput } from './mocks.utility'
+} from '../src/utility';
+import { mockGetInput } from './mocks.utility';
 
 describe('getInputOrDefault', () => {
-  jest.mock('@actions/core')
+  jest.mock('@actions/core');
 
   beforeEach(() => {
-    jest.resetAllMocks()
-  })
+    jest.resetAllMocks();
+  });
 
   it('should return input data', () => {
     jest
@@ -22,44 +22,44 @@ describe('getInputOrDefault', () => {
           [{ name: 'test', givenValue: 'test-value' }],
           options
         )
-      )
+      );
 
-    const input = getInputOrDefault('test', 'default')
+    const input = getInputOrDefault('test', 'default');
 
-    expect(input).toBe('test-value')
-  })
+    expect(input).toBe('test-value');
+  });
 
   it('should return default value', () => {
     jest
       .spyOn(core, 'getInput')
       .mockImplementation((name: string, options?: core.InputOptions) =>
         mockGetInput(name, [{ name: 'test', givenValue: '' }], options)
-      )
+      );
 
-    const input = getInputOrDefault('test', 'default')
+    const input = getInputOrDefault('test', 'default');
 
-    expect(input).toBe('default')
-  })
-})
+    expect(input).toBe('default');
+  });
+});
 
 describe('getBooleanInputOrDefault', () => {
-  jest.mock('@actions/core')
+  jest.mock('@actions/core');
 
   beforeEach(() => {
-    jest.resetAllMocks()
-  })
+    jest.resetAllMocks();
+  });
 
   it('should return default value', () => {
     jest
       .spyOn(core, 'getInput')
       .mockImplementation((name: string, options?: core.InputOptions) =>
         mockGetInput(name, [{ name: 'test', givenValue: '' }], options)
-      )
+      );
 
-    const input = getBooleanInputOrDefault('test', true)
+    const input = getBooleanInputOrDefault('test', true);
 
-    expect(input).toBe(true)
-  })
+    expect(input).toBe(true);
+  });
 
   it('should return true', () => {
     jest
@@ -79,14 +79,14 @@ describe('getBooleanInputOrDefault', () => {
           ],
           options
         )
-      )
+      );
 
-    let input = getBooleanInputOrDefault('test1', false)
-    expect(input).toBe(true)
+    let input = getBooleanInputOrDefault('test1', false);
+    expect(input).toBe(true);
 
-    input = getBooleanInputOrDefault('test2', false)
-    expect(input).toBe(true)
-  })
+    input = getBooleanInputOrDefault('test2', false);
+    expect(input).toBe(true);
+  });
 
   it('should return false', () => {
     jest
@@ -106,14 +106,14 @@ describe('getBooleanInputOrDefault', () => {
           ],
           options
         )
-      )
+      );
 
-    let input = getBooleanInputOrDefault('test1', true)
-    expect(input).toBe(false)
+    let input = getBooleanInputOrDefault('test1', true);
+    expect(input).toBe(false);
 
-    input = getBooleanInputOrDefault('test2', true)
-    expect(input).toBe(false)
-  })
+    input = getBooleanInputOrDefault('test2', true);
+    expect(input).toBe(false);
+  });
 
   it('give invalid input. expect throw error', () => {
     jest
@@ -133,33 +133,33 @@ describe('getBooleanInputOrDefault', () => {
           ],
           options
         )
-      )
+      );
 
     expect(() => getBooleanInputOrDefault('test2', true)).toThrow(
-      'The value of \'test2\' is not valid. It must be either true or false but got \'invalid\'.'
-    )
-  })
-})
+      "The value of 'test2' is not valid. It must be either true or false but got 'invalid'."
+    );
+  });
+});
 
 describe('getNumberInputOrDefault', () => {
-  jest.mock('@actions/core')
+  jest.mock('@actions/core');
 
   beforeEach(() => {
-    jest.resetAllMocks()
-  })
+    jest.resetAllMocks();
+  });
 
   it('should return default value', () => {
     jest
       .spyOn(core, 'getInput')
       .mockImplementation((name: string, options?: core.InputOptions) =>
         mockGetInput(name, [{ name: 'test', givenValue: '' }], options)
-      )
+      );
 
-    const expected = 10
-    const input = getNumberInputOrDefault('test', expected)
+    const expected = 10;
+    const input = getNumberInputOrDefault('test', expected);
 
-    expect(input).toBe(expected)
-  })
+    expect(input).toBe(expected);
+  });
 
   it('should return given value', () => {
     jest
@@ -175,11 +175,11 @@ describe('getNumberInputOrDefault', () => {
           ],
           options
         )
-      )
+      );
 
-    const input = getNumberInputOrDefault('test')
-    expect(input).toBe(10)
-  })
+    const input = getNumberInputOrDefault('test');
+    expect(input).toBe(10);
+  });
 
   it('give invalid input. expect throw error', () => {
     jest
@@ -195,10 +195,10 @@ describe('getNumberInputOrDefault', () => {
           ],
           options
         )
-      )
+      );
 
     expect(() => getNumberInputOrDefault('test', 10)).toThrow(
       `Can not convert 'abc' to number.`
-    )
-  })
-})
+    );
+  });
+});

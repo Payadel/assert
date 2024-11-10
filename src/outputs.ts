@@ -1,4 +1,4 @@
-import * as core from '@actions/core'
+import * as core from '@actions/core';
 
 export interface IOutput {
   success: boolean;
@@ -9,6 +9,6 @@ export interface IOutput {
 export function setOutputs(data: IOutput): void {
   for (const key of Object.keys(data)) {
     // @ts-expect-error the `data[key]` can be any type
-    core.setOutput(key, data[key])
+    core.setOutput(key, data[key]);
   }
 }
