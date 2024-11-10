@@ -3,23 +3,23 @@
 // https://blog.logrocket.com/commitlint-write-more-organized-code/
 
 module.exports = {
-  extends: ["@commitlint/config-conventional"],
+  extends: ['@commitlint/config-conventional'],
   rules: {
-    "type-enum": [
+    'type-enum': [
       2,
-      "always",
+      'always',
       [
-        "feat",
-        "fix",
-        "docs",
-        "style",
-        "refactor",
-        "test",
-        "ci",
-        "build",
-        "chore",
-        "deprecate",
-        "security"
+        'feat',
+        'fix',
+        'docs',
+        'style',
+        'refactor',
+        'test',
+        'ci',
+        'build',
+        'chore',
+        'deprecate',
+        'security'
       ]
     ]
   }
