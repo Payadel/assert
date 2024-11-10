@@ -4,7 +4,7 @@ repos:
     hooks:
       - id: commitlint
         stages: [ commit-msg ]
-        args: [ "--config=.configs/commitlint.config.js" ]
+        args: [ '--config=.configs/commitlint.config.js' ]
 
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v4.4.0
@@ -24,9 +24,9 @@ repos:
     hooks:
       - id: run-scripts
         name: Run All Before Push
-        args: [ "-f", ".git-hooks/run-all-before-push.sh" ]
+        args: [ '-f', '.git-hooks/run-all-before-push.sh' ]
         stages: [ push ]
       - id: run-scripts
         name: Before Commit
-        args: [ "-f", ".git-hooks/before-commit.sh" ]
+        args: [ '-f', '.git-hooks/before-commit.sh' ]
         stages: [ commit-msg ]
