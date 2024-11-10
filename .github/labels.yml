@@ -2,7 +2,8 @@
 # Semantic Versioning 2.0.0
 - name: "version-major"
   color: b60205
-  description: "Incompatible API changes or breaks backward compatibility for users"
+  description:
+    "Incompatible API changes or breaks backward compatibility for users"
 
 - name: "version-minor"
   color: 0e8a16
@@ -19,7 +20,9 @@
 
 - name: "priority-high"
   color: b60205
-  description: "After critical issues are fixed, these should be dealt with before any further issues."
+  description:
+    "After critical issues are fixed, these should be dealt with before any
+    further issues."
 
 - name: "priority-medium"
   color: D53B33
@@ -36,7 +39,8 @@
 
 - name: "scope-enhancement"
   color: a2eeef
-  description: "Enhancement of the code, Refactor, not introducing new features."
+  description:
+    "Enhancement of the code, Refactor, not introducing new features."
 
 - name: "scope-bug"
   color: d73a4a
@@ -44,7 +48,8 @@
 
 - name: "scope-performance"
   color: 5E4BDC
-  description: "Improving performance of the project, not introducing new features."
+  description:
+    "Improving performance of the project, not introducing new features."
 
 - name: "scope-new-feature"
   color: 07A297
@@ -73,7 +78,8 @@
 
 - name: "status-invalid"
   color: F25D8F
-  description: "This is off-topic, spam, or otherwise doesn't apply to this project."
+  description:
+    "This is off-topic, spam, or otherwise doesn't apply to this project."
 
 - name: "status-wontfix"
   color: ffffff
@@ -82,7 +88,8 @@
 # Contributors
 - name: "good first issue"
   color: 7057ff
-  description: "Good first issue for people wanting to contribute to this project."
+  description:
+    "Good first issue for people wanting to contribute to this project."
 
 - name: "help-wanted"
   color: 008672

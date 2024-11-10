@@ -1,5 +1,4 @@
 ---
-
 name: Bug Report
 
 about: Create a report to improve
@@ -9,7 +8,6 @@ title: "bug: "
 labels: "scope-bug"
 
 assignees: ""
-
 ---
 
 # Bug Report
