@@ -1,15 +1,13 @@
 ---
-
 name: Feature Request
 
 about: Suggest an idea for this project
 
-title: "feat(scope): "
+title: 'feat(scope): '
 
-labels: "scope-new-feature"
+labels: 'scope-new-feature'
 
-assignees: ""
-
+assignees: ''
 ---
 
 # Feature Request
